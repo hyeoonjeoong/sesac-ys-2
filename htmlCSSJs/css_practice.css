@@ -42,3 +42,45 @@ a:hover {
 input:focus {
     background-color: blue;
 }
+
+/*first-child*/
+.fruits span:first-child {
+    color: red;
+}
+
+/*last-child 적용되지않는다. 마지막태그가 span태그가 아님*/
+.fruits span:last-child {
+    color: red;
+}
+
+/*last-child */
+.fruits h3:last-child {
+    color: fuchsia;
+}
+
+/* nth-child */
+.zoo *:nth-child(2) {
+    background-color: peru;
+}
+
+/* not */
+.zoo *:not(span) {
+    background-color: darkolivegreen;
+}
+
+/* before after */
+.zoo::before {
+    content: "앞!";
+}
+.zoo::after {
+    content: "뒤!";
+}
+
+/* 특정 속성 선택 */
+[disabled] {
+    background-color: aquamarine;
+}
+
+input[type=password] {
+    background-color: tomato;
+}
