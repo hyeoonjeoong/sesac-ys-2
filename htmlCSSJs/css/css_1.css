@@ -1,47 +1,48 @@
 
 /* 전체 선택자*/
-/* * {
+* {
     color: white;
     background-color: gray; */
-
+}
 
 /* 태그 선택자*/
-/* span {
+span {
     background-color: red;
-} */
+}
 
 /* 클래스 선택자*/
-/* .second {
+.second {
     background-color: green;
-} */
+}
 
 
 /* 아이디 선택자*/
-/* #first {
+#first {
     background-color: blue;
 
-} */
+}
 
 /* 하위선택자*/
-/* div .apple {
+div .apple {
     color: red;
-} */
+}
 
 /*자식선택자*/
-/* div > .apple {
+div > .apple {
     color: blueviolet;
-} */
+}
 
 /*인접 형제 선택자 이렇게 하면 인접된 list만 변경*/ 
-/* h1 + ul {
+h1 + ul {
     color: blue;
     font-size: 20px;
-} */
+}
+
 /*인접 형제 선택자 이렇게 하면 전체 변경*/ 
-/* h1 ~ ul {
+h1 ~ ul {
     color: blue;
     font-size: 20px;
-} */
+}
 
 #tiger {
     background-color: yellow;
@@ -69,4 +70,4 @@ p.lion {
 
 li.lion ~ li {
     background-color: orange;
-}
+} */

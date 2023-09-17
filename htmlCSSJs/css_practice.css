@@ -1,0 +1,44 @@
+/*하위선택자*/
+
+/* div .orange {
+    color: red;
+} */
+
+div #apple {
+    background-color: red;
+}
+
+
+/*자식선택자*/
+ul > .orange {
+    background-color: orange;
+}
+
+/*인접 형제 선택자*/
+h1 + p {
+    background-color: aqua;
+}
+
+/*일반 형제 선택자*/
+h1 ~ ul {
+    background-color: green;
+}
+
+/*hover*/
+a:hover {
+    color: red;
+}
+
+.lion:hover {
+    color: red;
+}
+
+/*active*/
+#active:active {
+    background-color: blueviolet;
+}
+
+/*focus*/
+input:focus {
+    background-color: blue;
+}
