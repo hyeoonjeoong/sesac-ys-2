@@ -1,0 +1,86 @@
+/* div {
+    display: block;
+} */
+
+.box {
+    background-color: black; 
+    width: 100px; 
+    height: 100px;
+    color: white;
+    margin: 1px; 
+}
+
+/* inline : width, height, margin(top, bottom) 무용지물 */
+/* inline-block : inline과 block의 특징을 합쳐놓음 (inline: content의 크기만큼만 공간을 차지 / block : width, height, margin 정상 작동 */
+.d-inline-block {
+    display: inline-block;
+    padding: 20px; 
+}
+
+
+
+.container {
+     /* flex : 자식요소 하위 요소 아님 주의)를 inline-block으로 만든다. */
+    display: flex;
+    height: 500px;
+    flex-direction: column-reverse;
+   
+}
+
+.container-2 {
+    /* flex : 자식요소 하위 요소 아님 주의)를 inline-block으로 만든다. */
+   /* flex-wrap, justify-content*/
+    display: flex;
+    /* flex-direction: column; */
+   width: 400px;
+   height: 400px;
+   background-color: blue;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+.container-3 {
+    /* flex : 자식요소 하위 요소 아님 주의)를 inline-block으로 만든다. */
+   /* flex-wrap, justify-content*/
+    display: flex;
+    /* flex-direction: column; */
+   width: 400px;
+   height: 400px;
+   background-color: blue;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: flex-start;
+   align-content: center;
+}
+
+/*실습*/
+/* .container0 {
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    background-color: bisque; 
+    width: 100px; 
+    height: 100px;
+    color: blue;
+    display: flex;
+
+} */
+
+/*실습3*/
+.container-5 {
+   height: 500px;
+   width: 500px;
+   background-color: blanchedalmond;
+   display: flex;
+   align-items: center;
+   align-content: center;
+   /* flex-direction: column; */
+   flex-wrap: wrap;
+   justify-content: center;
+}
