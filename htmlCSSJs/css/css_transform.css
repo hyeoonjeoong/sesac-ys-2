@@ -1,0 +1,33 @@
+/* .bird:active {
+    transform: skew(20deg, 10deg);
+}
+
+.bird-rotate:active {
+    transform: rotate(20deg);
+}
+
+.bird-scale:active {
+    transform: scale(2);
+}
+
+.bird-translate:active {
+    transition: 1s;
+    transform: translate(700px, 10px)
+}
+
+.bird-transform:active {
+    transform: perspective(100px) rotateY(20px);
+} */
+
+.box {
+    background-color: black;
+    color: white;
+    width: 100px;
+    height: 100px;
+}
+
+.box:active {
+    width: 300px;
+    height: 300px;
+    transition: 1s 0.5s;
+}
