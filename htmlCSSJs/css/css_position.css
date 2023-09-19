@@ -1,0 +1,139 @@
+/* .container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: beige;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+}
+.item-1 {
+    position: relative;
+    left: 50px;
+    top: 50px;
+    background-color: red;
+}
+
+.item-2 {
+    position: absolute;
+    right: 30px;
+    bottom: 100px;
+    background-color: blue;
+}
+
+.item-3 {
+    position: fixed;
+    right: 100px;
+    top: 100px;
+    background-color: blueviolet;
+} */
+/* 
+.container {
+    position: relative;
+    background-color: blue;
+    height: 200px;
+}
+
+.item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.red{
+    z-index: 1;
+    background-color: red;
+}
+
+.orange {
+    z-index: 1;
+    background-color: orange;
+    top: 20px;
+    left: 20px;
+}
+
+.yellow {
+    background-color: yellow;
+    top: 40px;
+    left: 40px;
+} */
+
+/* 애벌레 그리기*/
+
+.parent {
+    width: 1000px;
+    height: 500px;
+    /* background-color: beige; */
+
+}
+
+.circle {
+    position: relative;
+    background-color: skyblue;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+}
+
+.circle1 {
+    position: relative;
+    top: 40px;
+    left: 100px;
+    background-color: blue;
+}
+
+.circle2 {
+    position: relative;
+    top: -100px;
+    left: 260px;
+    background-color: blueviolet;
+}
+
+.circle3 {
+    position: absolute;
+    top: 200px;
+    left: 360px;
+    background-color: burlywood;
+}
+
+.circle4 {
+    position: absolute;
+    top: 200px;
+    left: 460px;
+    background-color: teal;
+}
+
+.circle5 {
+    position: absolute;
+    top: 260px;
+    left: 610px;
+    background-color: thistle;
+    z-index: 1;
+}
+
+.circle-1 {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    top: 100px;
+    left: 140px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.circle-2 {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 110px;
+    left: 140px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+.image {
+    position: absolute;
+    top: 220px;
+}
