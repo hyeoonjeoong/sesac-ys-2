@@ -1,0 +1,215 @@
+/* 실습 01 */
+
+/* .container {
+    width: 500px;
+    height: 500px;
+    background-color: beige;
+    position: relative;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+}
+
+.item-1 {
+    position: relative;
+    left: 50px;
+    top: 50px;
+    background-color: chocolate;
+}
+
+.item-2 {
+    position: absolute;
+    right: 30px;
+    bottom: 100px;
+    background-color: rosybrown;
+}
+
+.item-3 {
+    position: fixed;
+    right: 100px;
+    top: 100px;
+    background-color: khaki;
+} */
+
+/* 실습 02 */
+
+/* .container {
+    position: relative;
+}
+
+.bird {
+    width: 300px;
+    height: 200px;
+    transform: skewY(5deg) rotate(5deg);
+    margin: 50px;
+}
+
+.bird1 {
+   position: absolute;
+   left: 100px;
+   top: 300px;
+   z-index: 3;
+}
+
+.bird2 {
+    position: absolute;
+    left: 350px;
+    top: 300px;
+    z-index: 2;
+ }
+
+ .bird3 {
+    position: absolute;
+    left: 600px;
+    top: 300px;
+    z-index: 1;
+ } */
+
+/* 실습 03 */
+
+ /* .box {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: white;
+ }
+
+ div:active {
+    width: 300px;
+    height: 300px;
+    transition: all 0.5s 1s;
+ } */
+
+/* 실습 04 */
+  /* .container {
+    width: 500px;
+    height: 500px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    flex-direction: row-reverse;
+    flex-direction: column;
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item01 {
+    background-color: burlywood;
+  }
+
+  .item02 {
+    background-color: rosybrown;
+  }
+
+  .item03 {
+    background-color: royalblue;
+  } */
+
+/* 실습 05 */
+    /* .container {
+        width: 500px;
+        height: 500px;
+        background-color: bisque;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: darkcyan;
+
+    } */
+
+        /* 실습 06 */
+        /* .container {
+            width: 500px;
+            height: 500px;
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: center;
+            align-items: center;
+            justify-content: flex-start;
+
+          }
+    
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: darkcyan;
+    
+        } */
+
+ /* 실습 07 */
+header {
+    width: 100%;
+    margin: 30px 0px;
+    background-color: wheat;
+}
+ul {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 0;
+}
+li {
+    margin: 2px 5px;
+}
+.left {
+    position: relative;
+    left: 5px;
+}
+/* header 01 */
+.header01 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header01 li {
+    display: inline-block;
+    justify-content: flex-end;
+}
+/* header 02 */
+.header02 {
+    display: flex;
+    justify-content: space-between;
+}
+.header02 li {
+    display: inline-block;
+    margin: 2px 5px;
+}
+/* header 03 */
+.header03 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header03 li {
+    display: inline-block;
+    margin: 2px 5px;
+}
+/* header 04 */
+.header04 {
+    background-color: thistle;
+    display: flex;
+    justify-content: center;
+}
+/* header 04 */
+.header05 {
+    display: flex;
+    justify-content: space-between;
+}
+.header05-left li  {
+    display: inline-block;
+}
+.header05-right li  {
+    display: inline-block;
+}
