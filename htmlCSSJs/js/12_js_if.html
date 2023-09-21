@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문</title>
+</head>
+<body>
+   <script>
+    //  let name = "lily"
+    //  if(name === "lily") {
+    //     console.log("lily리더님 안녕하세요")
+    //  }
+    //  else if(name === "linda") {
+    //     console.log("linda리더님 안녕하세요")
+    //  }
+    //  else {
+    //     console.log("누구세요?")
+    //  }
+     //if문은 다음 if문을 만나면 끝난다. 별개의 if문이다.
+
+     //------------------if문 실습
+    //  let age = Number(prompt("몇살?"))
+
+    //  if(age>=20) {
+    //     console.log("성인")
+    //  }
+
+    //  else if(age>=17) {
+    //     console.log("고등학생")
+    //  }
+
+    //  else if(age>=14) {
+    //     console.log("중학생")
+    //  }
+
+    //  else if(age>=8) {
+    //     console.log("초등학생")
+    //  }
+
+    //  else {
+    //     console.log("유아")
+    //  }
+
+    //  console.log("나이")
+ //------------------
+
+     number = 3;
+     switch (number) {
+        case 1:
+            console.log("1");
+            console.log("1");
+            break;
+        case 2:
+            console.log("2")
+            break;
+        case 3:
+            console.log("3")
+            break;
+        default:
+            console.log("모르겠어요")
+     }
+
+
+    //  조건? 참일 때 실행할 코드: 거짓일떄 실행할 코드
+     //삼항연산자는 한줄밖에 못쓴다. 한줄씩!
+
+     let name = "lily"
+     name == "lily"? console.log("안녕하세요") : console.log("누구세요")
+
+     let msg = name == "lily" ? "안녕하세요" : "누구세요?";
+     console.log(msg)
+
+// 오전 오후 실습
+
+     let now = new Date().getHours();
+     now >= 12? console.log("오후") : console.log("오전")
+
+   </script> 
+</body>
+</html>
