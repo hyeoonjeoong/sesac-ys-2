@@ -7,11 +7,83 @@
 </head>
 <body>
     <script>
-       function multifly (num1, num2){
-        return num1 * num2
 
-       }
-     console.log ()
+//-----------형변환실습
+        // let mathScore = Number(prompt("수학점수"));
+        // let engScore = Number(prompt("영어점수"));
+        // let avgScore = ((mathScore + engScore)/ 2);
+
+        // console.log("수학" + mathScore)
+        // console.log("영어" + engScore)
+        // console.log("총합" + (mathScore + engScore))
+        // console.log("총합" + avgScore)
+
+//-----------함수실습(1) multifly 연습
+        // function multifly (a, b){
+        //         return a * b;
+        // }
+        // console.log(multifly(2,9));
+        // console.log(multifly(3,7));
+
+//-----------함수실습(2) square
+        //   function square (a){
+        //     console.log(a**2);
+        //   }
+        //   square(4)
+        //   square(11)
+        //   square(5)
+
+//-----------삼항연산자
+        // let name = "cookie"
+
+        // name == "cookie" ? console.log("맞아요") : console.log("틀려요");
+
+//--
+        // let name = "lily"
+        // // 조건 ? 참일 때 실행할 코드 : 거짓일 때 실행할 코드
+        // name == "lily" ? console.log("안녕하세요") : console.log("누구세요?")
+
+        // let msg = name == "lily" ? "안녕하세요" : "누구세요?";
+        // console.log(msg)
+        
+
+//-----------삼항연산자
+
+        // number = "d";
+        // switch (number) {
+        //     case "a":
+        //         console.log("1");
+        //         break;
+        //     case "b":
+        //         console.log("2");
+        //         break;
+        //     case "c":
+        //         console.log("3");
+        //         break;
+        //     default:
+        //         console.log("모르겠어요ㅜㅜ");
+        //         break;
+        // }
+
+//-----------if문 실습
+
+    // let age = Number(prompt("몇살?"));
+
+    //  if (age>=20) {
+    //     console.log("성인")
+    //  }else if (age>=17) {
+    //     console.log("고등학생")
+    //  }else if (age>=14) {
+    //     console.log("중학생")
+    //  }else if (age>=8) {
+    //     console.log("초등학생")
+    //  }else {
+    //     console.log("유아")
+    //  }
+
+//-----------지금은 오전?오후?
+    let now = new Date().getHours();
+    now >= 12? console.log("오후") : console.log("오전")
 
     </script>
 </body>
