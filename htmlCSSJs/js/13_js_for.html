@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//----------for문----------
+        //초기값;조건문;증감문 이런 순서로 들어온다.
+        //let은 변수를 선언한것.
+        // for( let i = 0; i < 10 ; i++ ) {
+            //반복하고싶은 명령문을 작성한다. (반복하고 싶은 코드)
+        //     console.log(i, "안녕?");
+        // }
+        
+        // console.log("끝");
+
+//----------중첩for문----------
+            for(let i = 0; i < 5; i++) {
+                for(let j = 0; j < 5; j++){
+                    console.log(`i: ${i}, j: ${j}`)
+                }
+            }
+
+
+//----------초기값; 조건식; 증감문  
+for(let i = 0; i < 10; i=i+2) {
+            console.log(`i: ${i}`)
+        }
+        for(let i = 10; i > 0; i--) {
+            console.log(`i: ${i}`) 
+        }
+        for(let i = 10; i > 0; i=i-3) {
+            console.log(`i: ${i}`)
+        }
+
+
+//---------- for문과 while문의 차이
+//for : 반복할 횟수를 특정할 수 있을 때
+//while : 반복할 횟수를 특정할 수 없을 때
+
+
+//----------while문
+//조건 안적고 걍tru핻 된다. 특정할수없으니가. 그럼 조건이 트루일경우 나오는거
+
+        // while(조건){
+        //     //조건이 true일 경우 실행 할 명령문이 들어온다.
+        // }
+
+//----------for을 while로 바꿔보자
+        // for(let i=0; i<10; i++){
+        //     console.log(i);
+        // }
+
+
+        // //while은 초기값을 밖에 적어줘야한다.
+        // //조건이 중요하다. 끝나는 조건값인지.
+        // let i = 0; //초기식
+        // while(i < 10){
+        //     //조건이 true일 경우 실행 할 명령문이 들어온다.
+        //     console.log(i);
+        //     i++;//마지막에 증감문이 들어온다. 젤중요! 
+        // }
+
+//----------while문도 중첩
+        // let i = 0; //초기식
+        // while(i < 10){
+        //     //조건이 true일 경우 실행 할 명령문이 들어온다.
+        //     console.log(i);
+        //     i++;//마지막에 증감문이 들어온다. 젤중요! 
+        //     let j=0;
+        //     while (j<10) {
+        //         console.log(j);
+        //         j++
+        //     }
+        // }
+
+//---------- 조건과 다르게 사용자가 값을 입력하면 다시물어바야한다. 의도적으로 무한반복을 하기도 한다. 하지만 반복문이 끝나는 조건을 꼭 입력해줘야한다.
+        // let number = Number(prompt("양수를 입력하세요"))
+        // while(number < 0) {//조건
+        //     number = Number(prompt("양수를 입력하세요"))
+        // }
+
+        // while(true) {
+        //     let number = Number(prompt("양수를 입력하세요"))
+        //     if(number > 0) break; //반복문 강제로 종료시킨ㅇ다. number가 0부터 클때 반복문을 종료시키겟다.
+        //     console.log("hello")
+        // }
+        // console.log("끝")
+
+//---------- continue  반복문을 다음으로 넘기곘다는 의미ㅣ다음줄읽지않고 패스패스하는고. 걍 다음으로 넘긴다. 
+//0들어오면 나머지 나눴을때 나머지 0. 그럼 실행안시키고 젤 위로 올려서 i++시킨다. 
+            // for(let i=0; i<10 ; i++){
+            //     if(i%2 ==0) continue; //i가 짝수일때 콘솔을 찍지 않겟다..?
+            //     console.log(i);
+
+                //이 지점으로 jump. 콘솔확인해보자 결국 홀수일때만 콘솔에 나타난다. 
+                //먼가 아닐떄 다음방법으로 넘어가고싶을떄 컨티뉴 사여ㅛㅇ하면된다. 
+            // }
+
+//---------- do while문. while문의 변형이다.
+//처음 한번은 무조건 실행시키게된다.(이게 차이이다.) 일단 실행하고 조건을 본다. 근데 만족 안하면 끝나고
+//만족을 하면 다시 돌아가서 실행시킨다.  
+        // while(조건) [
+        //     //명령문
+        // ]
+        // do {//명령문
+        // } while(조건)
+
+//실습 합계구하기
+
+// let sum = 0
+
+// for(let i = 0; i<=100; i++) {
+//     if(i%2==0 || i%5==0){
+//         sum=sum+i
+//     }
+//     console.log(sum);
+// }
+ 
+//----------실습) 13의 배수이자 홀수
+
+// let result = Number(prompt("숫자입력"))
+
+// for(let i=0; i<=10000; i++){
+//     if(i%13==0 && i%2==1){
+//         console.log(i)
+//     }
+// }
+
+//----------실습) 구구단만들기 ㅠ
+
+// for(i=2; i<9; i++){
+
+// }
+
+
+
+//----------배열에서의 for
+// let fruits =["apple", "banana", "grape"];
+//     console.log(fruits[0])
+//     console.log(fruits[1])
+//     console.log(fruits[2])
+//     for(let i=0; i<fruits.length; i++) {
+//         console.log(fruits[i]) //i라는 변수를 배열로 사용하는것
+//     }
+
+//----------for /of문. 배열에서의 for문으로 생각
+//let 변수이름 of 배열(실제 존재해야한다!!!. 위에서 선언해둔 배열. 그 배열을 활용하겠다는거)
+//여기서는 선언을 하는게 아니라 참조하는것이다!
+//let은 변수를 선언해준거. (변수의 값에 담기는거의 특징. 이름지어줘야하는거니까)
+//of뒤에오는 배열은 존재하는 배열이여야한다. 
+// 뒤에있는 배열의 원소를 하나하나 탐색하면서, 그 원소의 값 자체를 fruit라는 변수에 담는다고 해석
+//그니까 배열의 크기만큼 돌아간다. 배열의 마지막까지 탐색하면 for문이 끝나느것.
+//첫번째 값 애플찍히고, 바나나찍히고, 그레이프찍히고,,, 배열 끝나니까 끝!
+    // for(let fruit of fruits){
+    //     console.log(fruit);
+    // }
+
+//어디서 뭐가 어떻게 쓰이는지 구분을 확실히 해야겟다.
+
+//for, for of는 문법이다.
+
+//여기서는 자바에서 배열을 위해 제공하는 함수이다. 메소드! 특정ㄱ ㅣ능들을 모아놓은ㄷ. 재활용되는.
+//함수 : (재사용 가능성이 있는) 특정한 기능을 묶어둔다. 스크립트 내에서 선언된.. ?
+//메소드 : 얘도 결국 함수에 속하는 개념이기는하다. 
+// 근데조건이 붙는다. 객체(class) 내에 선언되어있는 함수. > 정처기 책보자ㅓ 머더라... 
+
+
+//--------forEach 함수 문법 : 배열.forEach()  배열의 원소를 모두 순서대로 탐색하겠따!
+//앞에 쓰인 배열의 원소를 순차적으로 탐색함. 
+//이 함수자체가 매개변수를 받는다. 그럼 뭘 받냐? 함수를 받는다. 즉 foreach안에 함수구조를 넣는것.
+    // let fruits2 =["apple", "banana", "grape"];
+    //     fruits2.forEach((fruit, index, array) => {
+    //         //첫번째 매개변수에는 탐색하는값이 들어온다.탐색된 원소가 들어온다.
+    //         //두번쨰 매개변수에는 인덱스가 들어온다. 탐색된원소의 인덱스.
+    //         //세번쨰매개변수는 사용하고있는 배열자체가 들어온다.(fruits2의 내용이 들어오겟다)
+    //         //3개 다 안적어도되느네 순서와 자리가 중요!해서 인덱스만 한다고 인덱스만 두면 안된다. 앞에쓰고 인덱스해야함
+    //         console.log(fruit)
+    //         console.log(index)
+    //         console.log(array)
+    //     }) //이러케 화살표함수로 해도되고
+    // fruits2.forEach(function(){
+
+    // }) //이러케 작성해도된다. 
+
+
+//----------실습. 배열에서의 for문 모르겠다!!!!!!!집에서 해야지
+// let number =[]
+// for (let i=1; i<=100; i++){
+//     numbers.push(i) //배열(numner)의 마지막에 인자로 넘어간 값(i)를 추가
+// } //이렇게해서 배열을 만들어줄수있다. 
+
+
+//배열
+let numbers =[];
+for (let i=1; i<=100; i++){
+    numbers.push(i)
+} 
+
+//for
+let sum1 =0;
+for (let i=1; i<fruits.length; i++){
+    console.log(numbers[i])
+}
+
+//for of
+
+
+//forEach
+
+number.forEach(function(){
+
+})
+
+
+
+
+    </script>
+</body>
+</html>
