@@ -18,23 +18,23 @@
         // console.log("끝");
 
 //----------중첩for문----------
-            for(let i = 0; i < 5; i++) {
-                for(let j = 0; j < 5; j++){
-                    console.log(`i: ${i}, j: ${j}`)
-                }
-            }
+            // for(let i = 0; i < 5; i++) {
+            //     for(let j = 0; j < 5; j++){
+            //         console.log(`i: ${i}, j: ${j}`)
+            //     }
+            // }
 
 
 //----------초기값; 조건식; 증감문  
-for(let i = 0; i < 10; i=i+2) {
-            console.log(`i: ${i}`)
-        }
-        for(let i = 10; i > 0; i--) {
-            console.log(`i: ${i}`) 
-        }
-        for(let i = 10; i > 0; i=i-3) {
-            console.log(`i: ${i}`)
-        }
+// for(let i = 0; i < 10; i=i+2) {
+//             console.log(`i: ${i}`)
+//         }
+//         for(let i = 10; i > 0; i--) {
+//             console.log(`i: ${i}`) 
+//         }
+//         for(let i = 10; i > 0; i=i-3) {
+//             console.log(`i: ${i}`)
+//         }
 
 
 //---------- for문과 while문의 차이
@@ -187,35 +187,74 @@ for(let i = 0; i < 10; i=i+2) {
     // }) //이러케 작성해도된다. 
 
 
-//----------실습. 배열에서의 for문 모르겠다!!!!!!!집에서 해야지
-// let number =[]
+//----------실습. 배열에서의 for문 모르겠다!!!!!!!
+
+
+
+// //배열
+// let numbers =[];
 // for (let i=1; i<=100; i++){
+//     numbers.push(i)
+// } 
+
+// //for
+// let sum1 =0;
+// for (let i=1; i<fruits.length; i++){
+//     console.log(numbers[i])
+// }
+
+// //for of
+
+
+// //forEach
+
+// number.forEach(function(){
+
+// })
+
+
+//----------배열관련 메소드
+
+// let numbers =[]
+// for (let i=1; i<=10; i++){
 //     numbers.push(i) //배열(numner)의 마지막에 인자로 넘어간 값(i)를 추가
 // } //이렇게해서 배열을 만들어줄수있다. 
+// console.log(numbers)
+
+//----------.pop()
+// numbers.pop()
+// console.log("pop", numbers)
+
+// numbers.shift()
+// console.log("shift", numbers)
+
+// numbers.unshift(10)
+// console.log("unshift", numbers)
+
+// console.log("includes", numbers.includes(1))
+
+// console.log("indexOf 5", numbers.indexOf(5))
+// console.log("indexOf 5", numbers.indexOf(1))
 
 
-//배열
-let numbers =[];
-for (let i=1; i<=100; i++){
-    numbers.push(i)
-} 
-
-//for
-let sum1 =0;
-for (let i=1; i<fruits.length; i++){
-    console.log(numbers[i])
-}
-
-//for of
+//---------- [1,2,3].join("") // 123값이 나온다
+// numbers.join("join", numbers.join(""))
 
 
-//forEach
+let str = 'Happy day~! '
+console.log(str.length)
 
-number.forEach(function(){
+//검색창을 만든다고햇을떄/ 같은글자인데 대소문자다르게 섞어쓰거나 그런식.. 근데 같은거ㅣㄴ하다. 그니까 데이터로는 다 소문자로 받아서 통일시키는..?
+// toUpperCase()&toLowerCase() :
 
+'hello'.split("").reverse().join("")
+console.log('hello')
+
+
+const arr = [1, 2, 3, 4, 5];
+let arr_map = arr.map(function (b) {
+    return b + 3;
 })
-
-
 
 
     </script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title 내용</title>
+</head>
+<body>
+    <div id="box" class="box">hello</div>
+    <div id="container" class="box item">hello</div>
+    <span>hello span</span>
+
+    <input type="text" name="emamil"/>
+
+    <div id="box2">
+        <b>hello</b> box2
+    </div>
+
+
+    <script>
+
+ //----------선택된 요소의 정보를 보여준다.
+        let elById = document.getElementById("box")
+            console.log(elById)
+
+        let elByClass = document.getElementsByClassName("box")
+            console.log(elByClass[0]) //이러케 요소를 입력해주면 그거에 맞는게 나온다.
+
+        let elByTag = document.getElementsByTagName("span")
+            console.log(elByTag) //기본적으로 여러개 보여준다. 하나만 하려면 인덱스요소 입력.
+
+        let elByName = document.getElementsByName("email")
+            console.log(elByName)
+
+//----------선택자를 이용해서 요소를 선택하고 싶을 때 (하나를 선택하느냐, 요소 여러개를 선택하느냐의 차이)
+        let elBySelector = document.querySelector(".box") //위에서부터 처음 발견된 하나만 선택
+        let elBySelectorAll = document.querySelectorAll(".box")
+        console.log(elBySelector)
+        console.log(elBySelectorAll)
+
+        let elBox2 = document.getElementById("box2") //아래랑 같은거! 편한걸로 사용
+        // let elBox2 =  document.querySelector("#box2")
+        
+        console.log(elBox2.innerText) //선택된 요소의 컨텐츠를 가져온다.문자열만 가져온다.
+        console.log(elBox2.innerHTML) //태그도 가져온다!안에있는 콘ㅊ텐츠 전부가져옴. 콘솔창확인.
+
+        elBox2.innerText = "hello lily" //내용자체를 이걸로 바꿔버린다. 콘솔 요소창 확인. 
+        elBox2.innerHTML = "hello <b>lily</b>"
+    </script>
+</body>
+</html>
