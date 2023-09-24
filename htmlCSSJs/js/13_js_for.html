@@ -50,45 +50,45 @@
         // }
 
 //----------for을 while로 바꿔보자
-        // for(let i=0; i<10; i++){
-        //     console.log(i);
-        // }
+        for(let i=0; i<10; i++){
+            console.log(i);
+        }
 
 
-        // //while은 초기값을 밖에 적어줘야한다.
-        // //조건이 중요하다. 끝나는 조건값인지.
-        // let i = 0; //초기식
-        // while(i < 10){
-        //     //조건이 true일 경우 실행 할 명령문이 들어온다.
-        //     console.log(i);
-        //     i++;//마지막에 증감문이 들어온다. 젤중요! 
-        // }
+        //while은 초기값을 밖에 적어줘야한다.
+        //조건이 중요하다. 끝나는 조건값인지.
+        let i = 0; //초기식
+        while(i < 10){
+            //조건이 true일 경우 실행 할 명령문이 들어온다.
+            console.log(i);
+            i++;//마지막에 증감문이 들어온다. 젤중요! 
+        }
 
 //----------while문도 중첩
-        // let i = 0; //초기식
-        // while(i < 10){
-        //     //조건이 true일 경우 실행 할 명령문이 들어온다.
-        //     console.log(i);
-        //     i++;//마지막에 증감문이 들어온다. 젤중요! 
-        //     let j=0;
-        //     while (j<10) {
-        //         console.log(j);
-        //         j++
-        //     }
-        // }
+        let i = 0; //초기식
+        while(i < 10){
+            //조건이 true일 경우 실행 할 명령문이 들어온다.
+            console.log(i);
+            i++;//마지막에 증감문이 들어온다. 젤중요! 
+            let j=0;
+            while (j<10) {
+                console.log(j);
+                j++
+            }
+        }
 
 //---------- 조건과 다르게 사용자가 값을 입력하면 다시물어바야한다. 의도적으로 무한반복을 하기도 한다. 하지만 반복문이 끝나는 조건을 꼭 입력해줘야한다.
-        // let number = Number(prompt("양수를 입력하세요"))
-        // while(number < 0) {//조건
-        //     number = Number(prompt("양수를 입력하세요"))
-        // }
+        let number = Number(prompt("양수를 입력하세요"))
+        while(number < 0) {//조건
+            number = Number(prompt("양수를 입력하세요"))
+        }
 
-        // while(true) {
-        //     let number = Number(prompt("양수를 입력하세요"))
-        //     if(number > 0) break; //반복문 강제로 종료시킨ㅇ다. number가 0부터 클때 반복문을 종료시키겟다.
-        //     console.log("hello")
-        // }
-        // console.log("끝")
+        while(true) {
+            let number = Number(prompt("양수를 입력하세요"))
+            if(number > 0) break; //반복문 강제로 종료시킨ㅇ다. number가 0부터 클때 반복문을 종료시키겟다.
+            console.log("hello")
+        }
+        console.log("끝")
 
 //---------- continue  반복문을 다음으로 넘기곘다는 의미ㅣ다음줄읽지않고 패스패스하는고. 걍 다음으로 넘긴다. 
 //0들어오면 나머지 나눴을때 나머지 0. 그럼 실행안시키고 젤 위로 올려서 i++시킨다. 
