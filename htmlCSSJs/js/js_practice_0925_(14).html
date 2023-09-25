@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//--------------------기본자료형 . 값을 복사해서 사용. 개별의 공간.
+let num =5;
+let num2 =num;
+num2 +=5;
+
+console.log(num, num2) 
+
+//--------------------객체자료형. 같은 주소를 공유. 같은 공간.
+let arr = [1,2,3,4,5];
+let arr2 = arr;
+arr2.reverse()
+console.log(arr,arr2)
+
+//--------------------date객체
+let date = new Date("2023-09-25")
+console.log(date.getDay())
+
+//--------------------date객체 예시
+let expired = new Date("2023-09-30").getTime();
+let today = new Date().getTime();
+
+if(expired<today){
+    console.log("만료일이 지났어요 ㅜㅜ")
+} else {
+    console.log("아직 사용할 수 있어요!")
+}
+
+//--------------------실습01 합계 구하기
+
+let sum = 0;
+
+for(let i=0; i<=100; i++) {
+    if(i%2==0 || i%5==0) {
+       sum= i+sum
+    }
+} console.log(sum);
+
+//--------------------실습02 13의 배수이자 홀수 찾기
+
+// let num5 = Number(prompt("숫자를 입력해라"))
+
+// for(let i=0; i<=10000; i++) {
+//     if(i*13==0 || i%2==1) {
+//         console.log(i)
+//     }}
+
+//--------------------실습03 구구단만들기
+
+for(let i=2; i<10; i++){
+    console.log(i +"단")
+    for(let j=1; j<10; j++)
+        console.log(`${i} x ${j} = ${i*j}`)
+}
+
+//--------------------실습 선택 별 만들기 다시해보기!
+
+// let star = "";
+// let num6 = Number(prompt("숫자 입력하면 별이 나와요"))
+
+// for(let i=0; i<num6.length; i++){
+//     star = star + "*"
+//     console.log(num6 + star + '/n')
+// }
+
+
+//--------------------실습 배열에서의 for문
+
+//배열 만들기
+let numbers = []
+for(let i=1; i<=100; i++){
+    numbers.push(i)
+}
+
+//for문
+let sum1=0;
+for(let i=0; i<numbers.length; i++){
+    sum1 += numbers[i];
+}  console.log(sum1)
+
+//for of
+let sum2=0;
+for(let num2 of numbers) {
+    sum2 += num2;
+} console.log(sum2)
+
+//forEach
+let sum3=0;
+numbers.forEach((num3) => {
+    sum3 += num3;
+})
+ console.log(sum3)
+
+    </script>
+</body>
+</html>
