@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록만들기</title>
+</head>
+<body>
+    
+    <div style="font-size: 20px;">방명록입니다.</div><br/>
+
+    <div>작성자 <input type="text" id="name"/></div>
+    <div>내용 <input type="text" id="contents"/></div>
+    <button type="button" onclick="(add)">작성</button>
+
+    <table>
+        <tr>
+            <thead>
+            <td id="num">번호</td>
+            <td>작성자</td>
+            <td>내용</td>
+            <td>작성일</td>
+            </thead>
+        </tr>
+    </table>
+
+    <script>
+    function add () {
+        let name = document.getElementById("name").value;
+        let contents = document.getElementById("contents").value;
+        let num = document.getElementById("num").value;
+        let date = new Date();
+
+        const tr = document.createElement("tr")
+        const td1 = document.createElement("td")
+        const td2 = document.createElement("td")
+        const td3 = document.createElement("td")
+        const td4 = document.createElement("td")
+        
+    } 
+
+
+
+
+    </script>
+</body>
+</html>
