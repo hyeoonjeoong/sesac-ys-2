@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div>값1: <input type="text" id="value1"></div>
+        <div> 값2: <input type="text" id="value2"></div>
+        <div>연산자: <input type="text" id="operator"></div>
+        <div>결과: <input type="text" id="result"></div>
+        <br/>
+        <button type="button" onclick="cal()">계산하기</button>
+        <button type="button" onclick="reset()">초기화</button>
+
+        
+    </div>
+
+    <script>
+      
+        function cal(){
+           let value1 = Number(document.getElementById("value1").value);
+           let value2 = Number(document.getElementById("value2").value);
+           let operator = document.getElementById("operator").value;
+           let result = 0;
+
+
+           if (operator== "+") {
+            result= value1 + value2
+           } else if(operator== "-"){
+            result= value1 - value2
+           } else if(operator== "*"){
+            result= value1 * value2
+           } else if(operator== "/"){
+            result= value1 / value2
+           } else{alert("연산자에는 +, -, *, / 중 입력하세요")}
+
+           document.getElementById("result").value = result;
+        }
+
+
+        function reset(){
+            document.getElementById("value1").value="";
+            document.getElementById("value2").value="";
+            document.getElementById("operator").value="";
+            document.getElementById("result").value="";
+        }
+
+
+
+    </script>
+</body>
+</html>

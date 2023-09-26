@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document 객체</title>
+    <style>
+        .container{
+            width: 600px;
+            height: 400px;
+            background-color: beige;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+    </div>
+    <!-- input 태그를 선택해서 placeholder 속성 추가 -->
+    <input type="text" name="name" />
+
+    <div>
+        <button type="button" onclick="twinkle()">반짝여라</button>
+        <button type="button" onclick="addPlaceholder()">placeholder 추가</button>
+        <button type="button" onclick="addBox()">box 추가</button> <!--박스추가하는버튼만들기-->
+        <button type="button" onclick="removeBox()">box 삭제</button>
+
+        <!--함수실행ㅅ히키려면 괄호 있어야한다! -->
+    </div>
+
+    <script>
+        const boxes = document.querySelectorAll(".box");
+        const box1 = boxes[0];
+        box1.innerHTML = "hello";
+
+        console.log(box1.classList);
+
+        function twinkle(){
+            box1.classList.toggle("red")
+            // if (box1.classList.contains("red")) box1.classList.remove("red")
+            // else box1.classList.add("red")
+        }
+
+        //  input 태그를 선택해서 placeholder 속성 추가 
+        const input = document.querySelector("input");
+        function addPlaceholder() {
+            input.setAttribute("placeholder", "이름을 입력하세요");
+            //input태그로 setArri이게 요소 속성을 추가하겠다는거. 함수 자체를 넣어서 인풋태그에 
+            //이름을 입력하세요 넣는속성을 추가하겠다 해서 떴다. 앞에꺼는 선택하는거 입력, 뒤에는 추가할거 입력
+            input.setAttribute("id", "input_name");
+        }
+
+        // 특정 요소의 자식 요소들에 접근
+        const container = document.querySelector(".container");
+        console.log(container.children[1]) // children은 기본적으로 배열을 반환
+
+        // 특정 요소의 부모 요소에 접근
+        console.log(box1.parentNode) // parentNode는 기본적으로 하나의 요소만 반환
+
+        // 특정 요소의 형제 요소에 접근
+        console.log(box1.nextElementSibling) // 다음 형제 요소 하나
+        console.log(boxes[1].previousElementSibling) // 이전 형제 요소 하나
+
+        function addBox() {
+            //컨테이너의 마지막에 박스 추가하느 ㄴ코드작성?
+            //container 를 선택을 하긴해야한다
+            const container2 = document.querySelector(".container");
+
+            //추가할 요소를 만들어야한다. 아래 메소드 사용하면 새로운 요소를 만들수잇다. 
+            //어떤태그만들지 태그이름 괄호안에 넣고
+            const newBox = document.createElement("div"); //const 로 선언해줘야 사용 가능.//여기에는 태그이름만 들어와야한다.
+            newBox.classList.add("box")
+            newBox.classList.add("red") //백그라운드 레드인 박스가 추가된다.
+            newBox.className="box red" //위에두줄이랑 이거 하나랑 같다. 
+
+            //컨테이너에 추가한다. 자식요소로 마지막에 추가하면된다. 자식요소로 추가하거나 형제요소로 추가하거나 둘 중 하나
+            //container에 마지막 자식요소로 추가(append, appendChild)
+            // container2.appendChild(newBox); //컨테이너2에 어펜찰드 할거다. node객체만 넘길수있다어떤요소를 추가할지 괄호안에 작성
+           //
+
+            //container에 첫번째 자식요소로 추가 (prepend)
+            // container2.prepend(newBox)
+
+
+
+            //container 형제로 추가를 한다. (앞의형제로 할거냐뒤의 형제로할거냐) before, after
+            container2.before(newBox)
+        }
+
+        function removeBox(){
+            //삭제하고 싶은 요소를 직접 선택
+            const orangeBox = document.querySelector(".box.orange");//박스클래스 오렌지클래스동시에 가진걸 선택하겠다.
+            //얘는 직접선택한거니까 주르륵안된다
+            
+            //이제 삭제하자
+            orangeBox.remove() //remove라는 메소드 사용
+
+
+            //그리고 2번방법 // 이러케할일은 거읭벗음
+            //부모의 자식으로 선택해서 . 자식중 두번째요소를 선택하겠다는거. 그니까 쭉 사라짐
+            //삭제하고싶은 요소의 부모요소를 선택해서 자식으로 접근 // 계속 누르면 다음요소가 계속 삭제됨
+        //     // const container2 = document.querySelector(".container");
+        //     // container2.removeChild(container2.children[1]);
+        }
+</script>
+</body>
+</html>
