@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <style>
+        .container{
+            width: 600px;
+            height: 400px;
+            background-color: beige;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+    <input type="text" name="name" id="input" value="lily"/>
+    <button type="button" onclick="useVal()">val() 사용하기</button>
+    <button type="button" onclick="useAttr()">Attr() 사용하기</button>
+
+    <span id="span1">hello</span>
+    <button type="button" onclick="useCss()">css() 사용하기</button>
+    <button type="button" onclick="useText()">text() 사용하기</button>
+
+    <div class="container">
+        <div class="box red" id="red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+    </div>
+<button type="button" onclick="useAppend()">append() 사용하기</button>
+<button type="button" onclick="useRemove()">remove() 사용하기</button>
+<button type="button" onclick="useParent()">요소 탐색하기</button>
+<button type="button" onclick="controlClass()">클래스 조작하기</button>
+
+    <script>
+        //$("선택자").동작함수();
+        //js는 선택할 때 document.getEl~~~ 이런식으로 한다. 이 부분이 jquery에서는 위에 형식대로 쓰는거
+        //쿼리는 선택된 요소를 기준으로 속성에도 접근을 한다.
+        //js는 .innerHTML .append() 이런식인데 쿼리는 이런거없다 걍 다 함수.
+
+   function useVal(){
+        //id가 input인 태그를 선택하여ㅡ 그 input의 value를 가져오는 코드
+        const value = $("#input").val();
+        //위에꺼랑 똑같은코드를 js로 하면 아래처럼된다
+        //const value = document.getElementById("input").value
+        console.log(value)
+   
+
+        //id가 input인 태그를 선택하여ㅡ 그 input의 value를 설정하는 코드
+        $("#input").val("설정하고싶은 값");
+        //위에꺼랑 똑같은코드를 js로 하면 아래처럼된다
+        //document.getElementById("input").value = "설정하고 싶은 값";
+    }
+
+   function useCss(){
+    // .css() : style을 변경
+    $("#span1").css("font-size", "30px")
+    $("#span1").css("color", "blue")
+
+
+    //이러케 작성해도된다. 밖에서 변수 선언하고 쿼리 방식으로 하는거.
+    // const span = $("span")
+    // span.css("font-size", "30px")
+
+    //맨 위에 작성한거 js코드로 한다면?
+    //const span = document.getElementById("span1");
+    //span.style = "font-size: 30px; color: blue;"
+
+   }
+
+
+   //-----------속성값 변경하기
+   function useAttr(){
+    $("#input").val("");
+    $("#input").attr("placeholder", "이름을 입력하세요.") //placeholder는 기본ㄱ밧이 없어야 보인다. 그래서 기본값을 빈값으로 만들어주고 플레이스호럳 처리한거.
+
+
+    //js로 하려면?
+    //setAttributes() 이걸로. 
+   }
+
+   function useText(){
+    //innerText 이거도해보고 아래꺼도 해보ㅗ고
+    $("#span1").text("helloooooooooooo")
+
+
+    //innmerHTML
+    $("#span1").html("hello<b>lily</b>")
+
+   }
+
+
+   //쿼리로 하면 태그 추가하는게 간단해진다.
+   //append자주쓰인다! 추가하고 뺴고하느거!!!!!!!!!!!!!!!!
+   function useAppend(){
+    //js로 하면 이러케 4줄인데 쿼릴로 하면 한줄이다.
+    //const container2 = document.querySelctor(".container");
+    //const newBox = document.createElement("div");
+    //newBox.className = "box red";
+    // container2.append(newBox);
+
+    //.container의 마지막 자식으로 추가
+    $(".container").append(`<div class="box red"></div>`);
+
+    //.container의 첫번째 자식으로 추가
+    $(".container").prepend(`<div class="box red"></div>`);
+  
+    //.container의 앞형제로로 추가
+    $(".container").before(`<div class="box red"></div>`);
+    
+    //.container의 뒤형제로 추가
+    $(".container").after(`<div class="box red"></div>`);
+
+   }
+
+
+     //-----------요소삭제하기 자주쓰인다 리무브!
+   function useRemove (){
+    $(".box.orange").remove();
+
+    //비슷한기능 이것도잇다. 자식을 다 삭제?
+    //js에서 이거랑 비슷한 아래가 js로 한거
+    // const container = document.querySelector(".container");
+    // container.innerHTML=";"
+
+ //container 내용을 비우겠따는 쿼리 코드
+    $(".container").empty();
+   }
+
+   
+   function useParent() {
+    //parent()
+    console.log("parent", $(".box.red").parent().동작함수()) //이러케해도된다. 얘를 선택해서 동작함수 쓰고싶으면. 
+    //parents()
+    console.log("parents", $(".box.red").parents())
+    //next()
+    console.log("next", $(".box.red").next())
+    //prev()
+    console.log("prev", $(".box.orange").prev())
+    //children()
+    console.log("children", $(".container").children())
+
+   }
+
+//이거 엄청 자주쓰인다.
+   function controlClass() {
+    // $(".box.red").addClass("") //앞에있는거 선택해서 클래스를 추가하겟다는으미ㅣ
+    
+    const redBox = $("#red")
+    if(redBox.hassClass("red")) redBox.removeClass("red");
+    else redBox.addClass("red");
+    // $("#red").removeClass("red")
+   }
+
+    </script>
+</body>
+</html>
