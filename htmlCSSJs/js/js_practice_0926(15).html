@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js practie 0926(15)</title>
+</head>
+<body>
+    <style>
+        .container{
+            width: 600px;
+            height: 400px;
+            background-color: beige;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+    </div>
+   
+  <!--버튼 눌러서 placeholder 추가해보기-->
+    <input type="text" name="name">
+    <button type="button" onclick="addPlaceholder()">버튼을 누르면 placeholder가 생겨요</button>
+    
+  <!--버튼 눌러서 addBox 추가해보기-->
+    <button type="button" onclick="addBox()">box 추가</button> 
+
+     
+    <script>
+//--------------------버튼 눌러서 placeholder 추가해보기
+        const input = document.querySelector("input");
+        function addPlaceholder(){
+            input.setAttribute("placeholder", "생겼다!")};
+
+
+//--------------------다른 노드에 접근하기
+
+// 특정 요소의 자식 요소들에 접근
+const container = document.querySelector(".container");
+        console.log(container.children[1])
+        // children은 기본적으로 배열을 반환
+// 특정 요소의 부모 요소에 접근
+const box1 = document.querySelector(".box");
+//    console.log(box1.parentNode)
+        // parentNode는 기본적으로 하나의 요소만 반환
+
+ // 특정 요소의 형제 요소에 접근
+ console.log(box1.nextElementSibling) 
+
+//--------------------createElement
+//컨테이너의 마지막에 박스를 추가하고싶다면?
+function addBox(){
+    const container2 = document.querySelector(".container")
+    const newBox = document.createElement("div")
+    newBox.classList.add("box")
+    newBox.classList.add("red") 
+    container2.after(newBox);
+}
+
+while(true) {
+            let number = Number(prompt("지금은 몇년도인가요?"))
+            if(number==2023) break;
+            console.log("숫자만 입력하세요")
+        }
+        console.log("네 지금은 2023년도 입니다!")
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
