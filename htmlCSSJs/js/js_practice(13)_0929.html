@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //--------------------실습 선택 별 만들기 다시해보기!
+
+      //   let star = " ";
+      //   let num = Number(prompt("숫자가 *로 나온다"));
+
+      //   for (let i = 0; i < num; i++) {
+      //     star = star + "*";
+      //     console.log(star);
+      //   }
+
+      let star = "";
+      let num = Number(prompt("숫자가 *로 나온다"));
+
+      for (let i = 0; i <= num; i++) {
+        for (let j = 0; j < i; j++) {
+          star = star + "*";
+        }
+        star = star + "\n";
+      }
+      console.log(star);
+
+      //숫자를 입력한다
+      //숫자 i는 그 숫자까지 가면서 i++을 하면서 별을 찍는다. 이거를 반복
+      //그리고 별을 찍으면서 엔터도 찍는다. 이거를 반복
+      //즉 별을 찍고, 엔터를 찍고 두가지를 실행해야하기 때문에 각 명령을 반복해야해서 이중for문.
+      //만약 숫자 5가 들어오면 5보다 같거나 작을때까지 1씩 더해가면서 star를 찍는다.
+      //1일때 * 찍고, 2일때 **찍고 하면서 5까지 가는것
+      //이 과정에서, 한번씩 만족할때마다 엔터도 쳐줘야한다 그래서 조건이 하나 더 들어간다
+      //안에 있는 for문 (*찍기)이거를 나와서 엔터치는거 입력
+    </script>
+  </body>
+</html>
