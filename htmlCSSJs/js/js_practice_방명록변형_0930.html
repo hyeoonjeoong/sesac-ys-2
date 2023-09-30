@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 변형 연습</title>
+
+    <style>
+      button {
+        position: relative;
+        left: 40px;
+      }
+      table {
+        position: relative;
+        left: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="font-size: 20px; background-color: lavender; text-align: center"
+    >
+      하루 기록 💜
+    </div>
+    <br />
+
+    <ul>
+      <li id="mood">
+        오늘의 상태 <br />
+        <input type="radio" name="moodch" value="1" />아주조아요
+        <input type="radio" name="moodch" value="2" />조아요
+        <input type="radio" name="moodch" value="3" />그냥그래요
+        <input type="radio" name="moodch" value="4" />쫌그르네
+        <input type="radio" name="moodch" value="5" />아주별로야
+      </li>
+      <br />
+      <li>한 줄 일기</li>
+      <input
+        id="diary"
+        type="text"
+        name="diary"
+        size="100"
+        placeholder="작성 후 아래 버튼을 클릭해주세요!"
+      />
+    </ul>
+
+    <button type="button" onclick="add(), remove ()">슥삭슥삭</button>
+    <br />
+    <hr />
+
+    <table border="1" cellspacing="0">
+      <thead>
+        <tr>
+          <td>한 줄 일기</td>
+          <td>오늘의 상태</td>
+          <td>작성일</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      function getSelectedMood() {
+        // 모든 라디오 버튼 요소를 가져옵니다.
+        const radioButtons = document.getElementsByName("moodch");
+        for (let i = 0; i < radioButtons.length; i++) {
+          radioButtons[i].addEventListener("change", getSelectedMood);
+        }
+
+        // 선택된 라디오 버튼의 값을 저장할 변수를 선언합니다.
+        let selectedMoodValue = "";
+
+        // 모든 라디오 버튼을 순회하며 선택된 버튼의 값을 찾습니다.
+        for (let i = 0; i < radioButtons.length; i++) {
+          if (radioButtons[i].checked) {
+            selectedMoodValue = radioButtons[i].value;
+            break; // 선택된 버튼을 찾았으면 루프를 종료합니다.
+          }
+        }
+      }
+
+      function add() {
+        let mood = getSelectedMood().value; //이거.... 체크값 확인한 함수를 이 변수에 넣으려면??????
+        let diary = document.getElementById("diary").value;
+
+        const date = new Date();
+        const datestring = `${date.getFullYear()}년 ${
+          date.getMonth() + 1
+        }월 ${date.getDate()}일`;
+
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        td1.innerText = diary;
+        let td2 = document.createElement("td");
+        td2.innerHTML = mood;
+        let td3 = document.createElement("td");
+        td3.innerText = datestring;
+
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+
+        let tbody = document.querySelector("tbody");
+        tbody.append(tr);
+      }
+
+      function remove() {
+        document.getElementById("mood").checked = false; //안되는군
+        document.getElementById("diary").value = null;
+      }
+    </script>
+  </body>
+</html>

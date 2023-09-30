@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice_방명록 만들기</title>
+    <style>
+  
+    </style>
+  </head>
+  <body>
+    <div style="font-size: 20px">방명록입니다!</div></br>
+
+    <div class="box">
+      <div>작성자 <input type="text" id="name"/></div>
+      <div>내용 <input type="text" id="contents" size="50" /></div></br>
+      <button type="button" onclick="add(), remove()">작성</button>
+    </div> 
+
+    <table border="1" cellspacing="0" width="100%">
+        <tr>
+            <thead>
+            <td>번호</td>
+            <td>작성자</td>
+            <td>내용</td>
+            <td>작성일</td>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </tr>
+    </table>
+
+    <script>
+        let num = 1;
+        function add () {
+            let name = document.getElementById("name").value;
+            let contents = document.getElementById("contents").value;
+            
+            const date = new Date();
+            const datestring = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+
+            let tr = document.createElement("tr")
+            let td1 = document.createElement("td")
+                td1.innerText = num;
+            let td2 = document.createElement("td")
+                td2.innerText = name;
+            let td3 = document.createElement("td")
+                td3.innerText = contents;
+            let td4 = document.createElement("td")
+                td4.innerText = datestring;
+
+            tr.append(td1);
+            tr.append(td2);
+            tr.append(td3);
+            tr.append(td4);
+
+            //tr을 추가해야해 tbody에
+            let tbody = document.querySelector("tbody")
+                tbody.append(tr);
+            //그러면서 앞에 번호는 ++해주기
+            num++;
+        }
+        //작성버튼 누르면 input작성한거 지워지기
+        function remove (){
+            document.getElementById("name").value = null;
+            document.getElementById("contents").value = null;
+        }
+    </script>
+  </body>
+</html>
