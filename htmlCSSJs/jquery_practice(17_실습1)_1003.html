@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery실습_이미지바꾸기</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #box {
+        width: 300px;
+        height: 300px;
+        background-color: beige;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      #btn {
+        position: absolute;
+        left: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">과일을 <br />골라보아요!</div>
+
+    <div id="btn">
+      <button id="apple">사과</button>
+      <button id="banana">바나나</button>
+      <button id="grape">포도</button>
+      <button id="peach">복숭아</button>
+    </div>
+
+    <script>
+      $("#apple").on({
+        click: function () {
+          $("#box").html("<img src='./js/apple.jpeg' width=300px;>");
+        },
+      });
+      $("#banana").on({
+        click: function () {
+          $("#box").html("<img src='./js/banana.jpeg' width=300px;>");
+        },
+      });
+      $("#grape").on({
+        click: function () {
+          $("#box").html("<img src='./js/grape.jpeg' width=300px;>");
+        },
+      });
+      $("#peach").on({
+        click: function () {
+          $("#box").html("<img src='./js/peach.jpeg' width=300px;>");
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <button id="btn">버튼을 클릭해보세요!</button>
+    <!--버튼을 클릭했을 때 텍스트 출력할 공간 만들어주기-->
+    <p id="text"></p>
+
+    <button id="btnhover">버튼 클릭!</button>
+    <p id="hovertext"></p>
+
+    <script>
+      //   $(function () {
+      //     $("body").on(
+      //       //<body>요소에 이벤트 들어갈거다.
+      //       {
+      //         click: function () {
+      //           //click이벤트가 발생했을 때 동작은
+      //           $("#text").html("버튼을 클릭했군요?"); //아이디가 text인 부분에 html 요소가 추가된다.
+      //         },
+      //       },
+      //       "#btn" //아이디가 btn인 요소에 이벤트 핸들러를 등록하겠다.
+      //     );
+      //   });
+
+      $(function () {
+        $("#btnhover").hover(function () {
+          $("#hovertext").append("마우스가 버튼 위로 왔다가 나갔어요");
+        });
+      });
+    </script>
+  </body>
+</html>
