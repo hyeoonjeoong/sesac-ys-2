@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQeury 이벤트 리스너</title>
+    <script>
+      $(window).ready(function () {
+        $("p").text("ready 메서드 실행");
+      });
+    </script>
+    <style>
+      .hover {
+        background-color: beige;
+      }
+
+      body {
+        height: 1000px;
+      }
+      p {
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <!--     
+    <p></p>
+    <script>
+      // 로딩 이벤트
+      // 아래 3개의 이벤트 모두 DOM 요소가 불러와진 후에 실행
+      $(window).ready(function () {
+        console.log("로드 완료1");
+      });
+      $(function () {
+        console.log("로드 완료3");
+      });
+      $(document).ready(function () {
+        console.log("로드 완료2");
+      });
+    </script> -->
+    <button id="btnhover">버튼 클릭!호버!</button>
+    <p id="hovertext"></p>
+
+    <button>button</button>
+    <input />
+
+    <h2>스크롤 테스트</h2>
+
+    <script>
+      $("button").click(function () {
+        alert("click");
+      });
+      $("input").mouseover(function () {
+        alert("mouseover");
+      });
+
+      $("button").hover(
+        function () {
+          $(this).addClass("hover");
+        },
+        function () {
+          $(this).removeClass("hover");
+        }
+      );
+
+      $(function () {
+        $("#btnhover").hover(function () {
+          $("#hovertext").append("마우스가 버튼 위로 왔다가 나갔어요");
+        });
+      });
+
+      $(window).scroll(function () {
+        if ($(document).scrollTop() < 10) {
+          $("h2").css("backgroundColor", "green");
+        } else if ($(document).scrollTop() < 20)
+          $("h2").css("backgroundColor", "orange");
+        else {
+          $("h2").css("backgroundColor", "red");
+        }
+      });
+    </script>
+  </body>
+</html>

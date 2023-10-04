@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <title>
+      jQeury 요소 조작하기 addClass, removeClass, hasClass, toggleClass
+    </title>
+    <style>
+      .css1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+    <script>
+      function addClass() {
+        // $().addClass("클래스명")
+        $("div").addClass("css1");
+      }
+
+      function removeClass() {
+        // 선택된 요소에 클래스 삭제
+        $("div").removeClass("css1");
+      }
+
+      function hasClass() {
+        // 선택된 요소에 클래스가 있는지 여부 확인
+        // true, false 반환
+        alert($("div").hasClass("css1"));
+      }
+      function toggleClass() {
+        // 선택된 요소에 클래스가 있으면 삭제, 없으면 추가
+        $("div").toggleClass("css1");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="css1"></div>
+    <button onclick="addClass()">addClass</button>
+    <button onclick="removeClass()">removeClass</button>
+    <button onclick="hasClass()">hasClass</button>
+    <button onclick="toggleClass()">toggleClass</button>
+  </body>
+</html>

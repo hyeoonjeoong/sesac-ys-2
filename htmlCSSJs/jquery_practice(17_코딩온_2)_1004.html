@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQeury 요소 탐색하기 parent, parents, next, prev, children</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function findParent() {
+        // parent() : 부모 요소를 반환
+        console.log($(".child2").parent());
+        console.log($(".child2").parent()[0]);
+        $(".child2").parent().css("color", "red");
+
+        // parent() : 부모, 모든 조상 요소를 반환
+        $(".child2").parents().css("color", "blue");
+
+        // next() : 선택 요소 바로 다음 형제 요소를 반환
+        $(".child2").next().css("color", "green");
+
+        // prev() : 선택 요소 바로 이전 형제 요소를 반환
+        $(".child2").prev().css("background-color", "purple");
+        // children() : 자식 요소들을 반환
+        $(".parent").children().css("background-color", "beige");
+      }
+    </script>
+  </head>
+  <body>
+    <h5>요소 탐색</h5>
+    <div class="ancestor">
+      <div class="parent">
+        <div class="child1">자식1</div>
+        <div class="child2">자식2</div>
+        텍스트
+        <div class="child3">자식3</div>
+        <div class="child4">자식4</div>
+      </div>
+    </div>
+
+    <button onclick="findParent()">findParent</button>
+  </body>
+</html>

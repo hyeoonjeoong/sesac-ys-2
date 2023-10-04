@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQeury 키보드 이벤트</title>
+  </head>
+  <body>
+    <input />
+    <script>
+      $("input").on("keyup", function (e) {
+        console.log(e);
+        console.log(e.key);
+        console.log(e.keyCode);
+        console.log(e.currentTarget);
+        console.log(e.currentTarget.value);
+      });
+      $("input").on("keydown", function (e) {
+        console.log(e);
+        console.log(e.key);
+        console.log(e.keyCode);
+        console.log(e.currentTarget);
+        console.log(e.currentTarget.value);
+      });
+      $;
+
+      // 키보드 눌렀을 때
+      //   $(선택자).keydown(함수);
+
+      // 키보드 눌렀다 뗐을 때
+      //   $(선택자).keyup(함수);
+    </script>
+  </body>
+</html>
