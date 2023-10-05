@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트리스너</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //로딩이벤트 : html, body까지 로드된 후 실행할 코드를 걸어준다 (body까지 로드 후 진행)
+      // div를 선택하려면 일단 아래 내용이 읽혀야한다. 스크립트가 아래에 있어야한다.
+      // 순서대로 읽혀야한다. 근데 굳이스크립트를 위쪽에 작성하고싶다면 로딩이벤트를 사용하면된다.
+      //ready메소드에는 함수가 인자로 넘어간다. 이걸 핸들러라고 한다. 특정 이벤트가 발생했을 때 하고싶은 동작을 입력
+      //근데 이방식 권장 안한다고한다. 이후 지원 안할수도있다고한다.
+      $(document).ready(function () {
+        //document가 준비되면. 동작시킬함수를 안에 작성. 이 함수를 실행시켜라~ 의 의미이다.
+        console.log($(".container"));
+      });
+      //이걸로 하는 방식을 권장.jquery3.0이상부터 사용권장. $()이렇게 하고 안에 익명함수를 넣어준다.
+      $(function () {
+        console.log($(".container"));
+      });
+    </script>
+    <style>
+      .container {
+        background-color: cadetblue;
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 로딩이벤트 : html, body까지 로드된 후 실행할 코드를 걸어준다 -->
+    <div class="container"></div>
+    <div class="container"></div>
+
+    <!-- 키보드이벤트 -->
+    <input type="password" name="pw" />
+
+    <script>
+      //클릭이벤트를 걸고 싶은 요소를 선택.
+      //클릭 메소드 안에 원하는 동작을 담은 익명함수를 넣어주면된다.
+      //css는 스타일을 바꾸겠다는것이기 때문에 위에서 지정했더라도 덮어써진것.
+      $(".container").click(function () {
+        //즉 this를 쓰고싶으면 일반함수로 해서 넣어줘야한다!
+        // console.log(this);
+        $(this).css("background-color", "darkolivegreen");
+        //이벤트를 발생시킨 해당 요소에 대해처리하려면 this작성.
+        //클릭한것이 this에 담기게된다.실제 이벤트가 발생했을때 이벤트가 걸린 요소가 this에 담긴다.
+        //아래처럼 하면 다 선택되어서 모든 div가  바뀐다. 그니까 위에처럼 this로 해줘야한다.
+        //클릭이 발생한 그 요소를 선택해서 값을 넘겨주는것!
+        // $(".container").css("background-color", "red");
+
+        //여기서 익명함수는 일반함수로 작성해줘야한다. 화살표 함수 ㄴㄴ
+        //this는 어떻게 호출되느냐에 따라 달라지게된다. 화살표로 작성하게되면 this가
+
+        //동적 바인딩, 정적 바인딩
+        //화살표함수는 정적바인딩.함수가 읽히는 순간에 this를 결정한다. 호출하는 부분이 어디든 상관없이 걍 읽히면 결정.
+        //근데저게 읽히는 순간에 this는 window이다.  함수의 부묘오소에 있는 this를 선택학게된다. 그게 window. 그래서div는 읽히지않는다.
+        //화살표함수 : 정적바인딩 > 부모요소의 this를 결정함. 여기선 window
+        //일반 function함수 : 동적바인딩> 호출되는 순간에 동적으로 바인딩이된다. 호출할때를 고려해서 this를 결정!
+        // 호출될때에 따라 값이 다르게 결정.
+      });
+
+      //이러케해도된다. 화살표함수.
+      //   $(".container").click((event) => {
+      //     console.log(this);
+      //     $(event.target).css("background-color", "red");
+      //   });
+
+      //.container요소에 마우스가 올라갔을 때 실행시키고 싶은 코드 작성
+      $(".container").mouseover(function () {
+        $(this).css("background-color", "slateblue");
+      });
+
+      //.container요소에 마우스가 나갔을 때 실행시키고 싶은 코드 작성
+      $(".container").mouseout(function () {});
+
+      //.container요소에 mouseover, mouseout을 한번에 지정
+      //앞에 함수는 들어가고싶을때 실행하고시픈거, 뒤에함수에는 나갔을때 실행하고시픈거 작성
+      $(".container").hover(
+        function () {
+          $(this).html("<h2>hover 들어왔다</h2>");
+        },
+        function () {
+          $(this).html("<h1>hover 나갔다</h1>");
+        }
+      );
+
+      //scroll . document가 스크롤 될 때
+      $(document).scroll(function () {
+        console.log(document.body.scrollHeight); //body 의 scroll길이 콘솔창에 띄워준다.
+        console.log("hello");
+        if ($(document).scrollTop() > 20) {
+          $(".container").css("background-color", "beige");
+          $(".container").html("<h2>스크롤중!</h2>");
+        }
+      });
+
+      //키보드이벤트
+      //엔터를 눌렀을때 입력을 하게된다는 등. 로그인할 때.
+      //keydown 선택한 요소에서 키보드를 누르는 이벤트가 발생할 경우.
+      //keyup 선택한 요소에서 키보드를 떼는 이벤트가 발생할 경우.
+
+      $("input[name=pw]").keyup(function (event) {
+        // console.log("key: ", event.key);
+        if (event.key == "Enter") console.log("value: ", this.value); //여기는 input이 찍힐거고, input의 값이 찍히게 된다.
+        if (event.keyCode == "13") console.log("value: ", this.value); //얘랑 위랑 똑같다.
+      });
+
+      //on메소드. 이벤트를 걸겠다. 이벤트는 정해지지 않은 상태.
+      //   $("선택자").on("이벤트타입", "핸들러 함수");
+      //   $("input[name=pw]").on("keyup", function (event) {
+      //     if (event.key == "Enter") console.log("value: ", this.value); // login();
+
+      //   });
+    </script>
+  </body>
+</html>
