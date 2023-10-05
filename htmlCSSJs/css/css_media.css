@@ -1,0 +1,168 @@
+/* .container {
+  width: 500px;
+  height: 500px;
+  background-color: blanchedalmond;
+  display: flex;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+} */
+
+/* @media 미디어유형 and (크기 규칙) */
+
+/* 기본적으로는 위에꺼 하는데프린트할때는 아래내용대로하겠다. 결국 덮어쓰는것 */
+/* 기존에 지정한 다른값이 사라지는게 아니다. 아래 작성한 값만 덮어쓰는것. 다른건 그대로 */
+/* @media print {
+  .container {
+    background-color: blue;
+  }
+} */
+
+/* 700px 이상일 경우 */
+/* @media screen and (min-width: 700px) {
+
+  .container {
+    background-color: blue;
+  }
+} */
+
+/* 700px 이하일 경우를 의미 */
+/* 최대 넓이가 700px이니까 */
+/* @media screen and (max-width: 700px) {
+
+  .yellow {
+    background-color: darkgoldenrod;
+  }
+} */
+
+/* 컨테이너가 500px이하면 세로정렬하고싶다 */
+/* @media screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+} */
+
+/*----------------실습01---------------*/
+
+/* @media screen and (min-width: 500px) {
+  body {
+    background-color: skyblue;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    background-color: orange;
+  }
+}
+
+@font-face {
+  font-family: "SDSamliphopangche_Outline";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (max-height: 300px) {
+  p {
+    font-family: "SDSamliphopangche_Outline";
+  }
+}
+
+@media screen and (min-height: 500px) {
+  p {
+    background-color: green;
+  }
+} */
+
+/*----------------실습02---------------*/
+/* .container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: darkkhaki;
+  margin: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+} */
+
+/*----------------실습03---------------*/
+/* div {
+  display: flex;
+} */
+
+/* 768이하 */
+@media screen and (max-width: 768px) {
+  header {
+    text-align: center;
+    height: 60px;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  ul {
+    background-color: #c9ecf0;
+  }
+}
+/* 넓을때 */
+@media screen and (min-width: 768px) {
+  header {
+    font-weight: bolder;
+    height: 100px;
+  }
+
+  header .inner .menu {
+    justify-content: center;
+  }
+
+  .logo {
+    position: absolute;
+    left: 30px;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    margin: 10px;
+  }
+}
+
+/*----------------css변수---------------*/
+/* 기본컬러를 정해주고 */
+/* :root {
+    --color-main: navy;
+    --height-header-lg: 80px;
+} */
+
+/* 얘처럼 이렇게 작성해준다.  */
+/* .container {
+    background-color: var(--color-main);
+} */

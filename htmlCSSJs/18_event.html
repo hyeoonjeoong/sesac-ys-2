@@ -48,16 +48,14 @@
       $(".container").click(function () {
         //즉 this를 쓰고싶으면 일반함수로 해서 넣어줘야한다!
         // console.log(this);
-        $(this).css("background-color", "darkolivegreen");
+        // $(this).css("background-color", "darkolivegreen");
         //이벤트를 발생시킨 해당 요소에 대해처리하려면 this작성.
         //클릭한것이 this에 담기게된다.실제 이벤트가 발생했을때 이벤트가 걸린 요소가 this에 담긴다.
         //아래처럼 하면 다 선택되어서 모든 div가  바뀐다. 그니까 위에처럼 this로 해줘야한다.
         //클릭이 발생한 그 요소를 선택해서 값을 넘겨주는것!
         // $(".container").css("background-color", "red");
-
         //여기서 익명함수는 일반함수로 작성해줘야한다. 화살표 함수 ㄴㄴ
         //this는 어떻게 호출되느냐에 따라 달라지게된다. 화살표로 작성하게되면 this가
-
         //동적 바인딩, 정적 바인딩
         //화살표함수는 정적바인딩.함수가 읽히는 순간에 this를 결정한다. 호출하는 부분이 어디든 상관없이 걍 읽히면 결정.
         //근데저게 읽히는 순간에 this는 window이다.  함수의 부묘오소에 있는 this를 선택학게된다. 그게 window. 그래서div는 읽히지않는다.
@@ -92,12 +90,25 @@
       );
 
       //scroll . document가 스크롤 될 때
+      // $(document).scroll(function () {
+      //   console.log(document.body.scrollHeight); //body 의 scroll길이 콘솔창에 띄워준다.
+      //   console.log("hello");
+      //   if ($(document).scrollTop() > 20) {
+      //     $(".container").css("background-color", "beige");
+      //     $(".container").html("<h2>스크롤중!</h2>");
+      //   }
+      // });
+
+      //scroll. 바닥에 도달했을 때
       $(document).scroll(function () {
-        console.log(document.body.scrollHeight); //body 의 scroll길이 콘솔창에 띄워준다.
-        console.log("hello");
-        if ($(document).scrollTop() > 20) {
-          $(".container").css("background-color", "beige");
-          $(".container").html("<h2>스크롤중!</h2>");
+        //$(document).height() : document 의 높이를 구함
+        //현재 스크롤 위치: $(window).scrollTop()
+        //document는 바디, window는 브라우저로 생각
+        if (
+          $(document).height() - $(window).height() ==
+          $(window).scrollTop()
+        ) {
+          console.log("스크롤 바닥에 왔다");
         }
       });
 
@@ -118,6 +129,28 @@
       //     if (event.key == "Enter") console.log("value: ", this.value); // login();
 
       //   });
+
+      //-------------------------------------------------------------------js 이벤트리스너
+      const container = document.getElementsByClassName("container");
+      //jQuery의 on과 비슷
+      //요소하나를 정확히 선택해야한다. 컨테이너는 사실상 배열이다. 요소를 정확하게지정해줘야한다.
+      container[0].addEventListener("click", function () {
+        this.style.backgroundColor = "red";
+      });
+
+      //전체하고시프면
+      for (let i = 0; i < container.length; i++) {
+        container[i].addEventListener("click", function () {
+          this.style.backgroundColor = "red";
+        });
+      }
+
+      // jquery의 on과 js의 addEventListener의 차이점
+      // jquery 는 전체.
+      // addEventListener는 하나의 요소를 딱 지정해주어야한다.
+
+      //load는 read와 비슷한거
+      //change자주 쓰인다. 예를 들어 pw 입ㅂ력할떄 1 입력하고 아웃. 이후에 또 123입력하고 아웃하면 최초의 값과 달라지게된다. 이때실행.
     </script>
   </body>
 </html>

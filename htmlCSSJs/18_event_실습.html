@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스케줄 실습</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      table {
+        position: absolute;
+        left: 200px;
+        text-align: center;
+        width: 350px;
+        height: 350px;
+      }
+      .redfont {
+        color: red;
+      }
+      .bluefont {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>날짜 : <input type="text" id="date" value="" /></div>
+    <div>내용 : <input type="text" id="contents" value="" /></div>
+    <button type="button" onclick="addContents()">작성</button>
+
+    <table>
+      <caption style="color: green; font-size: larger">
+        2022 7월
+      </caption>
+      <thead>
+        <tr>
+          <td class="redfont">일</td>
+          <td>월</td>
+          <td>화</td>
+          <td>수</td>
+          <td>목</td>
+          <td>금</td>
+          <td class="bluefont">토</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1</br></td>
+          <td class="bluefont">2</td>
+        </tr>
+        <tr>
+          <td class="redfont">3</td>
+          <td>4</br></td>
+          <td>5</br></td>
+          <td>6</br></td>
+          <td>7</br></td>
+          <td>8</br></td>
+          <td class="bluefont">9</td>
+        </tr>
+        <tr>
+          <td class="redfont">10</td>
+          <td>11</br></td>
+          <td>12</br></td>
+          <td>13</br></td>
+          <td>14</br></td>
+          <td>15</br></td>
+          <td class="bluefont">16</td>
+        </tr>
+        <tr>
+          <td class="redfont">17</td>
+          <td>18</br></td>
+          <td>19</br></td>
+          <td>20</br></td>
+          <td>21</br></td>
+          <td>22</br></td>
+          <td class="bluefont">23</td>
+        </tr>
+        <tr>
+          <td class="redfont">24</td>
+          <td>25</br></td>
+          <td>26</br></td>
+          <td>27</br></td>
+          <td>28</br></td>
+          <td>29</br></td>
+          <td class="bluefont">30</td>
+        </tr>
+        <tr>
+          <td class="redfont">31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      $("td").on("click", function () {
+        console.log(this);
+        $("#date").val(this.innerText);
+        date = this;
+      });
+
+
+      function addContents() {
+        date.append($("input[id=contents]").val());
+      }
+    </script>
+  </body>
+</html>
