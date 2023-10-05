@@ -47,13 +47,13 @@
       //css는 스타일을 바꾸겠다는것이기 때문에 위에서 지정했더라도 덮어써진것.
       $(".container").click(function () {
         //즉 this를 쓰고싶으면 일반함수로 해서 넣어줘야한다!
-        // console.log(this);
-        // $(this).css("background-color", "darkolivegreen");
+        console.log(this);
+        $(this).css("background-color", "darkolivegreen");
         //이벤트를 발생시킨 해당 요소에 대해처리하려면 this작성.
         //클릭한것이 this에 담기게된다.실제 이벤트가 발생했을때 이벤트가 걸린 요소가 this에 담긴다.
         //아래처럼 하면 다 선택되어서 모든 div가  바뀐다. 그니까 위에처럼 this로 해줘야한다.
         //클릭이 발생한 그 요소를 선택해서 값을 넘겨주는것!
-        // $(".container").css("background-color", "red");
+        $(".container").css("background-color", "red");
         //여기서 익명함수는 일반함수로 작성해줘야한다. 화살표 함수 ㄴㄴ
         //this는 어떻게 호출되느냐에 따라 달라지게된다. 화살표로 작성하게되면 this가
         //동적 바인딩, 정적 바인딩
