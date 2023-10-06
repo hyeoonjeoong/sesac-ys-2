@@ -33,28 +33,26 @@
 } */
 
 /* 700px 이상일 경우 */
-/* @media screen and (min-width: 700px) {
-
+@media screen and (min-width: 700px) {
   .container {
     background-color: blue;
   }
-} */
+}
 
 /* 700px 이하일 경우를 의미 */
 /* 최대 넓이가 700px이니까 */
-/* @media screen and (max-width: 700px) {
-
+@media screen and (max-width: 700px) {
   .yellow {
     background-color: darkgoldenrod;
   }
-} */
+}
 
 /* 컨테이너가 500px이하면 세로정렬하고싶다 */
-/* @media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .container {
     flex-direction: column;
   }
-} */
+}
 
 /*----------------실습01---------------*/
 

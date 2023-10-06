@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/837ff3adc1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      :root {
+        --nav-height-lg: 100px;
+        --nav-height-sm: 60px;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      /* HEADER */
+      header {
+        width: 100%;
+        height: var(--nav-height-lg);
+        z-index: 100;
+        position: fixed;
+      }
+
+      /* 768px 보다 클때의 header */
+
+      header .inner {
+        background-color: lightblue;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* LOGO */
+      header .inner .logo {
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        left: 150px;
+      }
+
+      header .inner .menu {
+        display: flex;
+      }
+
+      header .inner .menu li {
+        margin: 15px;
+        font-weight: bold;
+      }
+
+      /* 미디어 쿼리 작성 768px 이하일 때  */
+
+      @media screen and (max-width: 768px) {
+        header {
+          height: var(--nav-height-sm);
+        }
+        header .inner {
+          align-items: center;
+        }
+
+        header .inner .logo {
+          position: static;
+          top: 30%;
+        }
+
+        header .inner .menu {
+          position: absolute;
+          flex-direction: column;
+          background-color: rgb(158, 179, 202);
+          align-items: center;
+
+          width: 100%;
+          top: var(--nav-height-sm);
+        }
+
+        header .inner .menu li {
+          font-weight: unset;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <div class="logo">
+          <i class="fa-solid fa-igloo"></i>
+        </div>
+        <ul class="menu">
+          <li>메뉴1</li>
+          <li>메뉴2</li>
+          <li>메뉴3</li>
+          <li>메뉴4</li>
+        </ul>
+      </div>
+    </header>
+    <script>
+      $(window).resize(function () {
+        if ($(window).width() < 768) {
+          $("i").click(function () {
+            $(".menu").toggle("slow");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
