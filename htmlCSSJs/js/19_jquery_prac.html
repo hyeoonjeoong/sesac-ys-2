@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      table {
+        margin-top: 50px;
+      }
+
+      td {
+        cursor: pointer;
+        /* calc 함수: 계산을 해주는 css 기본 함수 */
+        /* 부모요소 전체 넓이(100%) 나누기 7 연산 진행 후 결과를 px로 반환*/
+        width: calc(100% / 7);
+        height: 80px;
+        vertical-align: top;
+        /* 이거 기본값은 center. 센터로 정렬되다보니 두줄이 되면 두줄이 가운데정렬이되려해서 밀려보인다. 그래서 무조건 상단정렬로 붙인거 */
+      }
+
+      /* 얘도 fitst-child 로 해도 된다. */
+      tr > td:nth-child(1),
+      tr > th:nth-child(1) {
+        color: red;
+      }
+
+      tr > td:last-child,
+      tr > th:last-child {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="date" placeholder="날짜" readonly />
+    <input type="text" name="todo" placeholder="할 일" />
+    <button type="button" onclick="addSchedule()">작성</button>
+
+    <table align="center" width="90%" style="text-align: center">
+      <tr>
+        <th>日</th>
+        <th>月</th>
+        <th>火</th>
+        <th>水</th>
+        <th>木</th>
+        <th>金</th>
+        <th>土</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+    </table>
+
+    <script>
+      // 1. 날짜(td 태그)를 클릭했을 때,
+      // 클릭된 날짜의 텍스트가 첫번째 input 태그로 들어간다
+      // 1) td 태그에 클릭 이벤트 걸기
+      // 2) 클릭된 td 태그의 텍스트를 가져오기
+      // 3) 날짜 input 태그 선택하기
+      // 4) 선택된 input 태그의 value로 2)에서 가져온 날짜 넣기
+      let date;
+      $("td").on("click", function () {
+        // 1) td 태그에 클릭 이벤트 걸기
+        console.log(this); // 클릭한 td 요소가 담긴다.
+        $("input[name=date]").val(this.innerText); // 2) ~ 4) 선택된 input 태그의 value로 2)에서 가져온 날짜 넣기
+        // 혹은 $("#date").val($(this).text())
+        date = this; // 2-4) 를 해결하기 위한 키포인트!!!!!!!
+      });
+      // 2. 내용 input에 작성한 값을 캘린더에 추가하기
+      // 1) 작성 버튼에 함수를 건다
+      // 2) 작성 버튼에 걸릴 함수를 정의한다.
+      // 3) 내용 input의 value를 가져온다.
+      // 4) 3)에서 가져온 값을 캘린더에 추가한다.
+
+      function addSchedule() {
+        // 2) 작성 버튼에 걸릴 함수를 정의한다.
+        const content = $("input[name=todo]").val(); // 3) 내용 input의 value를 가져온다.
+        $(date).append(`<div>${content}</div>`); // 내가 원하는 td 태그 선택
+        // date에 담겨있는 td 태그에 내용 추가
+      }
+
+      // 아마 2 - 4) 번을 어떻게 구현하면 좋을 지 조금 막히실 수도 있는데, 정상입니다!
+    </script>
+  </body>
+</html>
