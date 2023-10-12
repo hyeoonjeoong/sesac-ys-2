@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%=name %>
+
+    <%-include("header.ejs") %>
+    <!-- ejs태그 안에 오는 js코드는 한 줄로 끝나야 한다. 한 줄로 안되면 나눠서 작성. -->
+    <% for(let i =0; i<product.length; i++) { %>
+
+    <div>상품 <%= product[i]%></div>
+    <!-- i는 이 안에서만 사용하는거기 때문에 꺽쇠퍼센트로 묶어줘야한다. -->
+    <% } %>
+
+    <!-- ejs태그 안에 바로 = 이 오면 =뒤에 있는 벼눗나 값을 html로 노출시켜준다. -->
+    <%="hello lily"%>
+    <!-- ejs태그 안에 바로 - 가 오면 -뒤에 있는 벼눗나 값을 html로 노출시켜준다. html태그를 인식한다. -->
+    <%="<div>안녕?</div>"%>
+    <%="<div>안녕?</div>"%>
+
+    <%-include("index.ejs")%>
+
+
+    <%=name %>
+    <%=product %-include>
+
+    <script>
+      //백에서 넘겨준product라는 변수는 ejs에서만 사용된다.
+      //그래서 콘솔출력이
+    console.log(product) //오류발생
+  </script>
+  </body>
+</html>
