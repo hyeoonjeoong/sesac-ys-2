@@ -29,6 +29,13 @@ console.log(x, y);
 // y=temp;
 //배열구조분해를 이용하면 치환을 쉽게 할 수 있다. 위에 있다.
 
+let zoo = ["panda", "tiger"];
+[animal1, animal2, animal3 = "lion"] = zoo;
+
+console.log("animal1", animal1);
+console.log("animal2", animal2);
+console.log("animal3", animal3);
+
 //------------------------------------------------------------
 const obj = {
   name: "lily",
@@ -52,7 +59,8 @@ const obj = {
 const { age, name: name2 } = obj;
 console.log(age, name2);
 
-//------------------------------------------------------------
+//
+------------------------------------------------------------
 //전개구문 연산자
 const arr1 = [1, 2, 3, 4, 5];
 const arr2 = ["a", "b", "c", "d", "e"];

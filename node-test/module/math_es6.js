@@ -3,13 +3,13 @@ const minus = (a, b) => a - b;
 const PI = 3.14;
 
 //이거는
-// module.exports = add
+module.exports = add
 //이거랑 같은걸로 보면 된다.
-// export default add
+export default add
 
 //--------------------------------
 //1)하나만 내보낼 경우
-// export default add;
+export default add;
 
 //2)여러개 내보낼 경우 (default 꼭 안적어도 된다.)
 export { add, minus };
