@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function changeColor(color) {
+        return new Promise(function(resolve) {
+          setTimeout(function() {
+            document.body.style.backgroundColor = color
+            resolve() //실행해줘야한다. 반환할값은 없으니 이렇게 실행만 시킨다.
+          }, 1000)
+        })
+      }
+
+      async function exec() {
+        await changeColor("red");
+        await changeColor("orange");
+        await changeColor("yellow");
+        await changeColor("green");
+        await changeColor("blue");
+      }
+
+      exec() //실행시켜줘야한다.
+    </script>
+  </body>
+</html>
