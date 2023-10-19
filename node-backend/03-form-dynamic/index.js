@@ -1,3 +1,4 @@
+//--------------------기본 --------------------
 const express = require("express");
 const app = express();
 const PORT = 8000;
@@ -10,26 +11,27 @@ app.use(express.json());
 app.get("/", function (req, res) {
   res.render("index");
 });
+//--------------------ajax --------------------
 //--------------get
+//여기서는 render로 작성하지 않는다.
+//html파일 자체를 보내주는게 render이다. 그럼 새 창으로 이동되는 셈.
 
 app.get("/ajax", function (req, res) {
-  //여기서는 렌더 안한다.ㅏ html파일 자체를 보내주는게 렌더이다.
-  //겟 요청은 쿼리로 데이터를 받아온다.
   console.log(req.query);
-  //쿼리는 객체이다. 그니까 {key: value, key: value}이런 형태로 들어온다.
-  // { key: value, key: value }
-  res.send(req.query); //이러케 받는거 만들ㅓ주고ㅛ
+  //get 요청은 query로 데이터를 받아온다.
+  //쿼리는 객체이다. 그니까 {key: value, key: value}이런 형태로 들어오게 된다.
+  res.send(req.query); //send는 특정 값을 응답으로 보내겠다는 것.
 });
-//---------------post
-//url같아도 메소드가 다르면 구분이 된다.
-app.post("/ajax", function (req, res) {
-  //여기서는 렌더 안한다.ㅏ html파일 자체를 보내주는게 렌더이다.
-  //겟 요청은 쿼리로 데이터를 받아온다.
 
+//---------------post
+//"/ajax"로 url이 같아도 메소드가 다르면 구분이 된다!
+app.post("/ajax", function (req, res) {
   console.log(req.body);
-  //쿼리는 객체이다. 그니까 {key: value, key: value}이런 형태로 들어온다.
-  res.send(req.body); //이러케 받는거 만들ㅓ주고ㅛ
+  //post 요청은 body로 데이터를 받아온다.
+  res.send(req.body); //send는 특정 값을 응답으로 보내겠다는 것.
 });
+
+//--------------------axios --------------------
 //---------------axios get
 app.get("/axios", function (req, res) {
   console.log(req.query);
@@ -44,6 +46,8 @@ app.post("/axios", function (req, res) {
   };
   res.send(data);
 });
+
+//--------------------fetch --------------------
 //---------------fetch get
 app.get("/fetch", function (req, res) {
   console.log(req.query);
@@ -65,7 +69,7 @@ app.post("/~~~~~", function (req, res) {
   //일치하면 "로그인 성공"
 });
 
-//---------------listen
+//--------------------listen --------------------
 app.listen(PORT, function () {
   console.log("open!");
 });

@@ -1,51 +1,51 @@
 //---------------------원하는대로 실행안되는
-// function goMart() {
-//     console.log("마트에 가서 어떤 음료를 살 지 고민한다.");
-//   }
+function goMart() {
+  console.log("마트에 가서 어떤 음료를 살 지 고민한다.");
+}
 
-//   function pickDrink() {
-//     setTimeout(function () {
-//       console.log("고민 끝!");
-//       product = "제로콜라";
-//       price = 2000;
-//     }, 3000);
-//   }
+function pickDrink() {
+  setTimeout(function () {
+    console.log("고민 끝!");
+    product = "제로콜라";
+    price = 2000;
+  }, 3000);
+}
 
-//   function pay(product, price) {
-//     console.log(`상품명: ${product}, 가격: ${price}`);
-//   }
+function pay(product, price) {
+  console.log(`상품명: ${product}, 가격: ${price}`);
+}
 
-//   let product;
-//   let price;
-//   goMart();
-//   pickDrink();
-//   pay(product, price);
+let product;
+let price;
+goMart();
+pickDrink();
+pay();
 
 //비동기처리
 //---------------------콜백함수로 해결한거.
 
-// function goMart() {
-//   console.log("마트에 가서 어떤 음료를 살 지 고민한다.");
-// }
+function goMart() {
+  console.log("마트에 가서 어떤 음료를 살 지 고민한다.");
+}
 
-// let product;
-// let price;
+let product;
+let price;
 
-// function pickDrink(callback) {
-//   setTimeout(function () {
-//     console.log("고민 끝!");
-//     product = "제로콜라";
-//     price = 2000;
-//     callback(product, price);
-//   }, 3000);
-// }
+function pickDrink(callback) {
+  setTimeout(function () {
+    console.log("고민 끝!");
+    product = "제로콜라";
+    price = 2000;
+    callback(product, price);
+  }, 3000);
+}
 
-// function pay(product, price) {
-//   console.log(`상품명: ${product}, 가격: ${price}`);
-// }
+function pay(product, price) {
+  console.log(`상품명: ${product}, 가격: ${price}`);
+}
 
-// goMart();
-// pickDrink(pay);
+goMart();
+pickDrink(pay);
 
 //---------------------promise로 해결해보기
 //어디서 사용할지 판단해야한다. 제일오래걸리는곳에 가서 넣어준다.
@@ -114,7 +114,7 @@ function pay(product, price) {
   console.log(`상품명: ${product}, 가격: ${price}`);
 }
 
-//얘 건드려주면된다
+//얘 건드려주면된다 아래처럼. 얜 필요업슴
 goMart();
 pickDrink().then(() => {
   pay(product, price);

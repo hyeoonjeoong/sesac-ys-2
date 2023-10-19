@@ -28,29 +28,38 @@
     <h3 id="result"></h3>
 
     <script>
+      //--------------------기본 getData()만들기 --------------------
+      //input에서 입력한 값에 대해 유효성을 검사 할 것이다.
+      //submit으로 하는게 아니라 자동으로 폼 검증이 안되기 때문!
+      //여기서 유효성 검사는 input태그를 기반으로 진행한다. 패턴 걸었으면 그걸 검사.
+      //checkValidity : 폼의 유효성 검사를 해서 boolean값을 반환한다.
+      //reportValidity : 오류가 있으면 창을 띄워 보고를 해준다.
+      //유효성 검사를 통과하지 못한 input에 대해 report 해주는 것.
+      //근데 이 부분에서 실행을 멈추는 건 아니다. 검사만 한다!
+      //그래서 return false;을 해준다. 
+      //함수는 return을 만나면 이어지는 다음 함수는 실행시키지 않는다!
+      //유효성 검사가 안되면 걍 종료시키겠다는 것
+      //얘는 걍 함수의 문법. return으로 하거나 return false로 반환하면 된다.
+
       function getData() {
         const form = document.forms["register"];
 
-        //여기서 유효성 검사는 input태그 기반으로 진행한다. 패턴 걸었으면 그거 검사.
         if (!form.checkValidity()) { //폼의 유효성 검사를 해서 boolean값 반환
-          form.reportValidity(); //오류가 있으면 보고를 해주겠다. 창 띄워주는. 유효성 검사를 통과하지 못한 input에 대해 report한다//근데 이게 실행을 멈추는건 아니다. 검사만하는거
-          return false; //유효성검사못하면 다른거할필요없으니까 걍 종료시켜라 의미. 얘는 걍 함수의 문법. return으로 하거나 return false로 반환하면 된다.
-          //리턴을 만나면 함수는 다음거를 읽지 않는다. !! 
+          form.reportValidity(); //오
+          return false;
         }
+        //그럼 여기서 getData라는 함수의 반환값은 총 두가지 형태가 되게 된다.
+        //false | object (객체 형태)
 
-        //getData라는 함수의 반환값은 총 두가지 형태가 된다.
-        //false| object (객체 형태)
-
-
-        const data = {
+        const data = { //form에서 name으로 쓰인 게 key값이 된다.
           id: form.id.value,
           pw: form.pw.value,
           name: form.name.value,
         }
         return data
-
       }
-
+      //--------------------ajax --------------------
+      //--------------------ajaxGet --------------------
       function ajaxGet() {
         const form = document.forms["register"];
         // console.dir(form);
@@ -67,14 +76,15 @@
           type: "GET", // 폼 속성 중 method
           url: "/ajax", // 폼 속성 중 action
           data: data,
-          success: function(result) { // 응답을 성공적으로 받았을 경우에 대한 이벤트 핸들러
+          success: function(result) {
+            // 응답을 성공적으로 받았을 경우에 대한 이벤트 핸들러
             // 매개변수(result)에 응답이 들어옴
             console.log(result);
             $("#result").html(`ajax get 요청 성공 ${result.name}님 환영합니다.`)
           }
         })
       }
-
+      //--------------------ajaxPost --------------------
       function ajaxPost() {
         const data = getData()
 
@@ -90,18 +100,19 @@
         })
       }
 
-
-      //axios함수는 promise객체를 return
+      //--------------------axios --------------------
+      //--------------------axiosGet --------------------
+      //axios함수는 promise객체를 return한다.
+      //get요청으로 데이터 보낼때는 params를 사용한다.
       function axiosGet() {
         const data = getData()
 
-        // axios 함수는 promise 객체를 return
         axios({
           method: "GET",
           url: "/axios",
-          params: data //get요청으로 데이터 보낼때는 params사용
+          params: data
         }).then((res) => {
-          // 서버에서 보내준 응답이 res에 담김
+          // 서버에서 보내준 응답이 res에 담긴다.
           console.log("res", res)
           console.log("res.data", res.data)
           const {
@@ -110,17 +121,16 @@
           $("#result").html(`axios get 요청 성공 ${name}님 환영합니다.`)
         })
       }
-
+      //--------------------axiosPost --------------------
       async function axiosPost() {
-        //동적 폼 전송을 하고 있다.
-        //폼 유효성 검사도 하고 싶다. 이걸 뭘로?
-        // input태그에 있는걸로 폼 유형성 검사를 하고 싶은것
-        //이 속성은 form의 submit이 일어날때만 동작한다.
-        //동적 폼전송은 form의 submit을 이용하는게 아니고, 버튼에 함수를 걸어서 하는거다.
-        //따라서 js코드 내에서 폼 유효성 검사를 하는 코드를 작성해야함.
-        //const regex=//, regex.test() 이용해서 하면 된다.. -방법1
-        //근데 이게 아니라 폼 요소자체로 유효성을 검사하고 싶으면
-        //form.checkValidity  form.reportValidity하면 된다. -방법2
+        //폼 유효성 검사를 하고 싶다. 이걸 뭘로 하는가?
+        //input태그에 있는걸로 폼 유형성 검사를 하고 싶다? 이건 form의 submit이 일어날때만 동작한다.
+        //동적 폼전송은 form의 submit을 이용하는게 아니고, js로 버튼에 함수를 걸어서 해준다.
+        //따라서 js코드 내에서 폼 유효성 검사를 하는 코드를 작성해야 한다!
+        //방법1) const regex=//, regex.test() 이용해서 하면 된다.
+        //검사하는 식 입력해서 확인하는 함수를 걸어주는 것.
+        //근데 이게 아니라 폼 요소자체로 유효성을 검사하고 싶으면?
+        //방법2) form.checkValidity과 form.reportValidity을 사용해도 된다.
         const data = getData();
         //data에 받아오는 값은 두가지 형태 중 하나이다.
         //getData를 보면 된다. 얘도 결국 false 아니면 object이다.
@@ -132,8 +142,6 @@
           method: "POST",
           url: "/axios",
           data: data,
-
-
         })
 
         axios({
@@ -152,7 +160,8 @@
 
         })
       }
-
+      //--------------------fetch --------------------
+      //--------------------fetchGet --------------------
       async function fetchGet() {
         const data = getData();
         if (!data) return;
@@ -168,7 +177,7 @@
         //쿼리만들수있는 메소드도 좆재한다.
         const urlQuery = new URLSearchParams(data).toString();
 
-        //----------------방법1.then---------------------
+        //----------------fetchGet 방법1.then---------------------
 
         // fetch(`/fetch? ${urlQuery}`).then((res) => {
         //   console.log(res)
@@ -182,16 +191,18 @@
         //이 함수의 res는 서버에서 여러분들이 응답한 객체
         //   console.log(res)
         // })
-        //----------------방법2. 반만 async / await---------------------
+
+        //----------------fetchGet 방법2. 반만 async/await---------------------
 
 
-        //----------------방법3. async / await---------------------
+        //----------------fetchGet 방법3.async/await---------------------
+
         const oriRes = await fetch(`/fetch? ${urlQuery}`)
         const res = await oriRes.json()
         console.log(res)
 
       }
-
+      //--------------------fetchPost --------------------
       function fetchPost() {
         const data = getData()
         if (!data) return;

@@ -40,6 +40,7 @@ app.get("/get", function (req, res) {
   res.send("get 요청 성공"); //send는 특정 값을 응답으로 보내겠다는 것. 객체 배열 등.
 }); //get요청을 받는 /get이라는 주소를 만든 것.
 
+//-----post ver 1
 //-----loclahost:8000/post주소로 post요청을 받기 위한 준비
 //post는 url로 들어갈 수 없다.url로 입력하는 무조건 get이다.
 //즉 get을 위한 post주소는 없게 되는 것.
@@ -48,6 +49,7 @@ app.get("/get", function (req, res) {
 //post는 url주소로 직접 요청하는건 불가능하다.
 //정보가 숨겨진다. url에 노출되지 않는다.
 //보통은 데이터를 새로 생성하는 요청에 주로 사용한다. (CRUD중에서 C를 의미하는 요청에 사용)
+
 app.post("/post", function (req, res) {
   console.log(req.body);
   res.send("post 요청 성공");
