@@ -31,5 +31,20 @@ app.post("/postPracValidation", function (req, res) {
   res.send("post 요청 성공");
 });
 
+//---------------axios get
+app.get("/axios", function (req, res) {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+//---------------axios post
+app.post("/axios", function (req, res) {
+  console.log(req.body);
+
+  const data ={
+  const id = "cookie";
+  const pw = "1234";}
+  res.send(data);
+});
 //------------listen
 app.listen(PORT, function () {});
