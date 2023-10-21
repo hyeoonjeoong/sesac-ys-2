@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  </head>
+  <body>
+    <!-- <h1>실습1</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data" name="register">
+      <input type="text" name="id" placeholder="아이디" />
+      <br />
+      <input type="password" name="pw" placeholder="비밀번호" />
+      <br />
+      <input type="text" name="name" placeholder="이름" />
+      <br />
+      <input type="text" name="age" placeholder="나이" />
+      <br />
+      <input type="file" name="userfile" />
+      <br />
+      <br />
+
+      <button type="submit">회원가입</button>
+    </form> -->
+
+    <h1>실습2</h1>
+
+    <form name="dynamic-upload">
+      <input type="text" name="id" placeholder="아이디" />
+      <br />
+      <input type="password" name="pw" placeholder="비밀번호" />
+      <br />
+      <input type="text" name="name" placeholder="이름" />
+      <br />
+      <input type="text" name="age" placeholder="나이" />
+      <br />
+      <input type="file" name="userfile" />
+      <br />
+      <br />
+
+      <button type="submit">회원가입</button>
+      <button type="button" onclick="dynamicUpload()">(동적 폼 전송) 회원가입</button>
+      <div id="dynamic-upload-result"></div>
+
+    </form>
+    <script>
+      function dynamicUpload() {
+        const form = document.forms["dynamic-upload"]
+
+        const formData = new FormData();
+        formData.append("title", form.title.value)
+        formData.append("userfile", form.userfile.files[0])
+        formData.append("src", req.file.path)
+
+
+        axios({
+          method: "POST",
+          url: "/upload/dynamic",
+          data: formData, //폼데이터를 여기로 옮긴다.
+          headers: {
+            "Content-type": "multipart/form-data"
+          }
+        }).then((res) => {
+          // console.log(res.data)
+          const result = document.getElementById("dynamic-upload-result")
+          result.innerHTML = `<img src="/${res.data.src}" width="150"/>`
+        })
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  </head>
+  <body>
+    <h2>가장 기본적인 설정</h2>
+    <!-- 일반 폼 전송을 이용해서 파일 업로드 하기 -->
+    <!-- enctype : application/x-www-form-urlencoded(기본값) -->
+    <!-- 파일을 전송하려면 multipart/form-data로 변경해야 함. -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="userfile" />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h2>multer storage를 이용한 설정</h2>
+    <form action="/upload/detail" method="post" enctype="multipart/form-data">
+      <input type="file" name="userfile" />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h2>파일 여러개 업로드 (하나의 input 이용)</h2>
+    <form action="/upload/array" method="post" enctype="multipart/form-data">
+      <!-- input type file의 multiple 속성은 여러개의 파일을 선택할 수 있게 함. -->
+      <input type="file" name="userfile" multiple />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+
+    <h2>파일 여러개 업로드 (여러 개의 input 이용)</h2>
+    <form action="/upload/fields" method="post" enctype="multipart/form-data">
+      <input type="file" name="userfile1" multiple />
+      <br />
+      <input type="text" name="title1" />
+      <br />
+      <input type="file" name="userfile2" />
+      <br />
+      <input type="text" name="title2" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+
+    <h2>동적 폼 전송(axios)를 이용한 파일 업로드</h2>
+    <!--acion method 얘네는 axios에서 할거라 필요없음 폼 구조달라진다.-->
+    <!--스크립트에서 ㄱㄱ-->
+
+    <form name="dynamic-upload">
+      <input type="file" name="userfile" />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="button" onclick="dynamicUpload()">업로드</button>
+    </form>
+    <div id="dynamic-upload-result"></div>
+    <script>
+      function dynamicUpload() {
+        const form = document.forms["dynamic-upload"]
+
+        const formData = new FormData();
+        //FormData객체의 append메소드는 데이터를 추가할 때 사용한다.
+        formData.append("title", form.title.value) //얘는 값 받아올수있따.
+        //type이 file인 input태그를 선택해서 files에 접근해보면 파일이있다?
+        //아래 얘네 2줄로는 처리못한다. 이미지데이터는 files로 접근해야한다.
+        console.log("value", form.userfile.value)
+        console.log("files", form.userfile.files)
+        //파일이라는 정보 자체를 넘겨주는 것.
+        formData.append("userfile", form.userfile.files[0])
+        //아래 방식은 이미지 데이터를 정상적으로 처리할 수 없음
+        // const data = {
+        //   title: form.title.value,
+        //   userfile: form.userfile.value
+        // }
+
+
+        axios({
+          method: "post",
+          url: "/upload/dynamic",
+          data: formData, //폼데이터를 여기로 옮긴다.
+          headers: {
+            "Content-type": "multipart/form-data"
+          }
+        }).then((res) => {
+          console.log(res.data)
+          const result = document.getElementById("dynamic-upload-result")
+          result.innerHTML = `<img src="/${res.data.src}" width="150"/>`
+        })
+      }
+    </script>
+
+    <!-- fetch를 이용한 동적 폼 전송의 content-type 지정 -->
+  </body>
+</html>
