@@ -38,13 +38,13 @@ app.get("/axios", function (req, res) {
 });
 
 //---------------axios post
-app.post("/axios", function (req, res) {
-  console.log(req.body);
+// app.post("/axios", function (req, res) {
+//   console.log(req.body);
 
-  const data ={
-  const id = "cookie";
-  const pw = "1234";}
-  res.send(data);
-});
+//   const data ={
+//   const id = "cookie";
+//   const pw = "1234";}
+//   res.send(data);
+// });
 //------------listen
 app.listen(PORT, function () {});
