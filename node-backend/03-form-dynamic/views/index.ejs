@@ -170,30 +170,38 @@
         //fetch(url, option객체)
         //url은 action에 작성하는 그 url을 의미
         //option객체에 method가 있다.
-        //fetch는 method 기본값이 get이다. 그래서 악적어도된다.
-        //얘는 무조건 쿼리로 보내야한다. get요청시 데이터를 쿼리로 만들어서 url과 함께 전송
+        //fetch는 method 기본값이 get이다. 그래서 악 적어도 된다.
+        //얘는 무조건 쿼리로 보내야한다. get요청시 데이터를 쿼리로 만들어서 url과 함께 전송한다.
 
         //const urlQuery = `id=${data.id}&name=${data.name}&pw=${data.pw}`
-        //쿼리만들수있는 메소드도 좆재한다.
+
+        //이렇게 귀찮게 작성하지 않고
+        //쿼리 형태로 만들 수 있는 메소드도 존재한다. 아래처럼 작성
         const urlQuery = new URLSearchParams(data).toString();
 
         //----------------fetchGet 방법1.then---------------------
 
-        // fetch(`/fetch? ${urlQuery}`).then((res) => {
-        //   console.log(res)
-        //json()이용해서 파싱해야한다.
-        //얘는 프로미스기반이다. 
-        // const data = res.json()
-        //console.log(data) 는 undifineㅇㄴ나온다. 
-        //   return res.json()
-        // }).then((res) => {
-        //위에서 파싱해서 리턴하고 있기 때뭉네
-        //이 함수의 res는 서버에서 여러분들이 응답한 객체
-        //   console.log(res)
-        // })
+        fetch(`/fetch? ${urlQuery}`).then((res) => {
+          console.log(res)
+          // json()이용해서 파싱해야한다.
+          // json은 프로미스기반이다. 
+          const data = res.json()
+          // console.log(data)를 하면 undefined 나온다. 
+          return res.json()
+        }).then((res) => {
+          // 위에서 파싱해서 return하고 있기 때문에
+          // 이 함수의 res는 서버에서 여러분들이 응답한 객체가 된다.
+          console.log(res)
+        })
 
         //----------------fetchGet 방법2. 반만 async/await---------------------
 
+        fetch(`/fetch?${urlQuery}`).then(async (res) => {
+          console.log("원본", res);
+          console.log("파싱", await res.json());
+          // 응답을 파싱해야함.
+          // .json(), .text(),
+        })
 
         //----------------fetchGet 방법3.async/await---------------------
 
@@ -203,22 +211,24 @@
 
       }
       //--------------------fetchPost --------------------
+
       function fetchPost() {
         const data = getData()
         if (!data) return;
 
-        //원래는 content-type기본값 사용: applocation/x-www-form-urlendodfed
-        //하지만 feych post요청 시에 기본값을 사용했을 때 동작을 안함
-        //content-type을 application/json형태로 변경해야한다.
+        // 원래는 content-type 기본값 사용 : application/x-www-form-urlencoded
+        // 하지만, fetch post 요청 시에 기본값을 사용했을 때 동작을 안 함
+        // content-type을 application/json 형태로 변경
+
         fetch("/fetch", {
           method: "POST",
           headers: {
-            "content-Type": "application/json"
+            "Content-Type": "application/json"
           },
-          body: JSON.stringify(data) //data객체 (js)를 json형태로 변경
-        }).then(() => {
+          body: JSON.stringify(data) // stringify: data 객체 (js)를 json 형태로 변경
+        }).then((res) => {
           return res.json()
-        }).then(() => {
+        }).then((res) => {
           console.log(res)
           $("#result").html(`fetch post 요청 성공 ${res.name}님 환영합니다.`)
         })
