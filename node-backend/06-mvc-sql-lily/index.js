@@ -6,8 +6,12 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const router = require("./routes/user");
-app.use("/user", router);
+const router = require("./routes");
+app.use("/", router);
+
+app.get("*", function (req, res) {
+  res.render("404");
+});
 
 app.listen(PORT, function () {
   console.log(`Sever Open: ${PORT}`);
