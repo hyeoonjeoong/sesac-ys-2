@@ -11,7 +11,7 @@ const conn = mysql.createConnection({
   host: "localhost",
   user: "user",
   password: "qowlwl223!",
-  database: "sesac_practice",
+  database: "sesac_test",
 });
 
 //콜백함수로 설계
