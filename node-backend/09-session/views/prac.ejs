@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+      #on {
+        display: none
+      }
+
+      #off {
+        display: none
+      }
+    </style>
+  </head>
+  <body>
+    <button>MENU 1</button>
+    <button>MENU 1</button>
+    <div id="btnbox"></div>
+    <!-- <button id="on">Login</button>
+    <button id="off">LogOut</button> -->
+    <div>여기는 HOME 입니다! 🦖</div>
+
+    <div id="message"></div>
+
+    <script>
+      const user = "<%=user%>"
+
+      if (user) {
+        const message = document.getElementById("message")
+        const btnbox = document.getElementById("btnbox")
+        message.innerHTML = "<%=user%> 님 환영합니다. 🐱"
+        btnbox.innerHTML = " <button>Login</button>"
+      } else if (!user) {
+        console.log("ㄴㄴ")
+        message.innerHTML = ""
+        message.innerHTML = "로그인을 아직 하지 않으셨군요! 로그인을 진행해보세요."
+        btnbox.innerHTML = " <button>LogOut</button>"
+
+
+
+      }
+    </script>
+  </body>
+</html>
