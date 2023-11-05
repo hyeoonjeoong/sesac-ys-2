@@ -5,7 +5,7 @@ const controller = require("../controller/Cvisitor");
 // ~~~~~:8000 -> index.ejs render
 router.get("/", controller.home);
 
-// ~~~~~:8000/visitor -> visitor.ejs render
+// ~~~~~:8000/visitors -> visitor.ejs render
 router.get("/visitors", controller.visitor);
 
 // 방명록 등록

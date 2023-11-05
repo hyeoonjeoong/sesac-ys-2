@@ -11,7 +11,7 @@
   <body>
     <!------------get으로 정보 받기------------>
 
-    <!-- <h1>get으로 정보 받기</h1>
+    <h1>get으로 정보 받기</h1>
     <form action="/getPrac" method="get" name="login">
 
       이름<input type="text" name="name" />
@@ -22,17 +22,17 @@
       </fieldset>
       <fieldset>
         <legend>생년월일</legend>
-        <select name="birthday" id="year">
+        <select name="birthday">
           <%for (let i=1888; i <=2023; i++){ %>
           <option value="<%=i%>"> <%=i%></option>
           <%}%>
         </select>년
-        <select name="birthday" id="month">
+        <select name="birthday" >
           <%for (let i=1; i <=12; i++){ %>
           <option value="<%=i%>"> <%=i%></option>
           <%}%>
         </select>월
-        <select name="birthday" id="day">
+        <select name="birthday" >
           <%for (let i=1; i <=31; i++){ %>
           <option value="<%=i%>"> <%=i%></option>
           <%}%>
@@ -49,9 +49,9 @@
       </br>
       <button type="submit">회원가입</button>
 
-    </form> -->
+    </form>
     <!------------post로 정보 받기------------>
-    <!-- <h1>post로 정보 받기</h1>
+     <h1>post로 정보 받기</h1>
     <form action="/getpostPrac" method="post" name="login">
 
       이름<input type="text" name="name" required/>
@@ -96,10 +96,10 @@
 
     </br>
     <button type="submit">회원가입</button>
-    </form> -->
+    </form> 
 
     <!------------post로 정보 받기, validation 적용하기------------>
-    <!-- <h1>post로 정보 받기 validation 적용</h1>
+    <h1>post로 정보 받기 validation 적용</h1>
   <form action="/postPracValidation" method="post" name="login">
     아이디<input type="text" name="idname" oninput="checkId(this)" required/></br>
     <div id="idError" style="background-color: rosybrown;"></div>
@@ -114,9 +114,9 @@
     <input type="radio" name="gender" value="female"><label for="female" required>여자</label>
     <button type="submit">제출</button>
 
-  </form> -->
+  </form> 
     <!------------Axios get으로 정보 받기------------>
-    <!-- <h2>axios get 회원가입</h2>
+     <h2>axios get 회원가입</h2>
     <form name="register">
 
       이름<input type="text" name="name" />
@@ -155,23 +155,7 @@
       <button type="button" onclick="axiosGet()">회원가입</button>
 
     </form>
-    <h3 id="result"></h3> -->
-
-
-
-    <!------------Axios post 로그인----------->
-    <h2>axios ㅔㅐt </h2>
-    <form name="goLogin">
-
-      아이디 <input type="text" name="id" />
-      비밀번호 <input type="password" name="pw" />
-
-      </br>
-      <button type="button" onclick="axiosPost()">로그인</button>
-
-    </form>
-    <h3 id="loginResult"></h3>
-
+    <h3 id="result"></h3> 
 
 
     <script>
@@ -217,40 +201,41 @@
       }
 
       //-------------------axios get 회원가입
-      // function getData() {
-      //         const form = document.forms["register"];
-      //         const interest =[]
-      //       for (let input of form.interest){
-      //         if(input.checked) interest.push(input.value);
-      //       }
-      //         if (!form.checkValidity()) { 
-      //           form.reportValidity(); 
-      //         }
+      function getData() {
+              const form = document.forms["register"];
+              const interest =[]
+            for (let input of form.interest){
+              if(input.checked) interest.push(input.value);
+            }
+              if (!form.checkValidity()) { 
+                form.reportValidity(); 
+              }
 
-      //         const data = {
-      //           name: form.name.value,
-      //           gender: form.gender.value,
-      //           birth: `${form.year.value}-${form.month.value}-${form.day.value}`,
-      //           interest: interest,
-      //         }
-      //         return data
-      //         console.log(data)
-      //       }
-      //   function axiosGet() {
-      //   const data = getData()
-      //   axios({
-      //     method: "GET",
-      //     url: "/axios",
-      //     params: data 
-      //   }).then((res) => {
-      //     console.log("res", res)
-      //     console.log("res.data", res.data)
-      //     const {
-      //       name
-      //     } = res.data
-      //     $("#result").html(`axios get 요청 성공 ${name}님 환영합니다.`)
-      //   })
-      // }
+              const data = {
+                name: form.name.value,
+                gender: form.gender.value,
+                birth: `${form.year.value}-${form.month.value}-${form.day.value}`,
+                interest: interest,
+              }
+              return data
+              console.log(data)
+            }
+      function axiosGet() {
+        const data = getData()
+        axios({
+          method: "GET",
+          url: "/axios",
+          params: data 
+        }).then((res) => {
+          console.log("res", res)
+          console.log("res.data", res.data)
+          console.log("res.body", req.body)
+          const {
+            name
+          } = res.data
+          $("#result").html(`axios get 요청 성공 ${name}님 환영합니다.`)
+        })
+      }
       //-------------------axios post 로그인
 
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer"); // multer 불러오기
-const path = require("path");
+const path = require("path"); //내장 모듈이다. 경로를 쉽게 구하기 위한.
 
 const app = express();
 const PORT = 8000;
@@ -39,8 +39,8 @@ app.get("/", function (req, res) {
 });
 
 app.post("/upload", upload.single("userfile"), function (req, res) {
-  // console.log("file:", req.file);
-  // console.log("body:", req.body);
+  console.log("file:", req.file);
+  console.log("body:", req.body);
   // console.log("id:", req.body.form.id.value);
   res.render("result_pra", {
     src: req.file.path,
@@ -60,8 +60,8 @@ app.post(
   function (req, res) {
     //응답으로 잘 나오는지보려고 보낸거.
     res.send({
+      ...req.body,
       src: req.file.path,
-      id: req.body.id,
     });
   }
 );

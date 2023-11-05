@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios post로그인 실습 연습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>axios post로그인 실습 연습</h1>
+    <form name="loginForm">
+      id: <input type="text" name="id" />
+      pw: <input type="password" name="pw" />
+      <button type="button" onclick="login()">LOGIN!</button>
+      <div class="resultBox"></div>
+    </form>
+    <script>
+      function login() {
+        const form = document.forms["loginForm"]
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        }
+        console.log("data 들어왔나", data);
+
+        axios({
+          method: "POST",
+          url: "/login",
+          data: data
+        }).then((res) => {
+          const {
+            isSuccess,
+            msg
+          } = res.data
+          console.log("isSuccess 가 머냐", isSuccess)
+          const element = document.querySelector(".resultBox")
+          element.innerHTML = msg
+
+          const color = isSuccess ? "blue" : "red"
+          element.style.color = color
+        })
+      }
+    </script>
+  </body>
+</html>

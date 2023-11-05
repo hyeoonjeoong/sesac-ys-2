@@ -39,7 +39,7 @@ app.get("/axios", function (req, res) {
 });
 //---------------axios post
 app.post("/axios", function (req, res) {
-  console.log(req.body);
+  console.log("req.body", req.body);
   const data = {
     ...req.body,
     msg: "반가워요", //메시지 추가해서 send

@@ -37,14 +37,5 @@ app.get("/axios", function (req, res) {
   res.send(req.query);
 });
 
-//---------------axios post
-// app.post("/axios", function (req, res) {
-//   console.log(req.body);
-
-//   const data ={
-//   const id = "cookie";
-//   const pw = "1234";}
-//   res.send(data);
-// });
 //------------listen
 app.listen(PORT, function () {});

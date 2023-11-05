@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>댓글 목록 보기</title>
+    <title>Document</title>
   </head>
   <body>
-    <form name="login">
-      <fieldset>
-        <legend>ID</legend>
-        <input type="text" name="userid" />
-      </fieldset>
-      <fieldset>
-        <legend>Password</legend>
-        <input type="password" name="password" />
-      </fieldset>
-
-      <button type="button" onclick="clickLogin()">로그인</button>
-    </form>
-    <div class="login-result"></div>
-
+    <h1>댓글 모음</h1>
+    <a href="/">홈으로 이동하기</a>
+    <ul>
+      <% for (let i = 0; i < commentInfos.length; i++) { %>
+      <li>
+        <b><%= commentInfos[i].userid %></b> -
+        <a><%= commentInfos[i].comment %></a>
+      </li>
+      <% } %>
+    </ul>
   </body>
 </html>
