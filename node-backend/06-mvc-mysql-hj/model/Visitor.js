@@ -8,6 +8,11 @@ const conn = mysql.createConnection({
 });
 
 //전체 방명록 목록 가져오기
+//얘는 콜백함수로 형태를 설계를 해 준 것이다. (cb)들어와야 실행되도록.
+//다른 함수가 매개변수로 들어오면서 불러져서 getVisitors함수가 실행되게 된다.
+//그래서 cb(rows)로 형태를 만들어준것이다. rows값이 들어와야 한다는 것이 아니다.
+//다른 곳에서 getVisitors(hi) 이런식으로 함수를 호출하게 되면 hi가 rows로 들어가게 되고
+//값이 불려져와 들어가게 됨으로써 getVisitors가 실행되게 되는 것.
 exports.getVisitors = (cb) => {
   conn.query(`SELECT * FROM visitor`, (err, rows) => {
     // err 변수가 빈 값이 아니라면, err가 발생했다는 것.

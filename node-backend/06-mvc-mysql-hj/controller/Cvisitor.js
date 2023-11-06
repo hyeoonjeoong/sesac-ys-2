@@ -5,6 +5,7 @@ exports.home = (req, res) => {
   res.render("index");
 };
 
+//전체 방명록 목록 가져오기
 exports.visitor = (req, res) => {
   Visitor.getVisitors((rows) => {
     res.render("visitor", { data: rows });
