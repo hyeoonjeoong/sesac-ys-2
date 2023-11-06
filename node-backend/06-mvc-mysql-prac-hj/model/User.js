@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+
 const cnn = mysql.createConnection({
   host: "localhost",
   user: "user",
@@ -6,12 +7,16 @@ const cnn = mysql.createConnection({
   database: "sesac_test",
 });
 
+//회원가입 버튼 클릭
 exports.post_signup = (data, cb) => {
-  //insert부분 작성
-  const sql = `insert into user (userid, name, pw) values (`${data.userid}, ${data.name}, ${data.pw}`)`
+  let sql = `INSERT INTO user(userid, name, pw) VALUES('${data.userid}','${data.name}','${data.pw}');`;
+  cnn.query(sql, function (err) {
+    if (err) throw err;
+    cb();
+  });
 };
 
-exports.post_signin = (data, cb) => {};
+exports.post_login = (data, cb) => {};
 exports.get_user = (id, cb) => {};
 
 exports.update_profile = (data, cb) => {};
