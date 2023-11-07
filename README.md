@@ -9,3 +9,4 @@ SeSac 강의 코드 관리
 - git branch test4
 
 - pr test
+- pull request
