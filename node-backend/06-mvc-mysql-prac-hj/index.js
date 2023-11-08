@@ -17,3 +17,6 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
   console.log("Server Port : ", port);
 });
+
+//먼가 이상한데
+//된건가
