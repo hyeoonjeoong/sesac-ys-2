@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const router = require("./routes");
-app.use("/", router);
+app.use("/user", router);
 
 app.get("*", (req, res) => {
   res.send("접근할 수 없는 주소입니다.");

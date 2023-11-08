@@ -1,16 +1,14 @@
 const express = require("express");
 const user = require("../controller/Cuser");
 const router = express.Router();
-
-//메인 페이지
+//메인페이지
 router.get("/", user.index);
-
 //회원가입
 router.get("/signup", user.signup); //회원가입
 // router.post("/signup", user.post_signup); //회원가입 버튼 클릭
 
-// //로그인
-// router.get("/login", user.login); //로그인 페이지
+//로그인
+router.get("/login", user.login); //로그인 페이지
 // router.post("/login", user.post_login); //로그인 버튼 클릭
 
 // //내 정보(프로필 페이지)
