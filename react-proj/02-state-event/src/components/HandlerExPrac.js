@@ -1,5 +1,7 @@
 import { Component, useState } from "react";
 import "./HandlerExPrac.css";
+import bananaImg from "../banana.jpg";
+import peachImg from "../peach.jpg";
 
 // class HandlerExPrac extends Component {
 //   constructor(props) {
@@ -70,13 +72,24 @@ import "./HandlerExPrac.css";
 
 function HandlerExPrac() {
   const [text, setText] = useState("");
-  const [fonColor, setFonColor] = useState("");
+  const [fontColor, setFontColor] = useState("");
+  const [bgColor, setBgColor] = useState("");
+  const [fruitImage, setFruitImage] = useState("");
+
   const addText = (event) => {
     return text;
   };
 
-  const changeColor = (event) => {
-    setFonColor(event.target.value);
+  const changeFontColor = (event) => {
+    setFontColor(event.target.value);
+  };
+
+  const changeBgColor = (event) => {
+    setBgColor(event.target.value);
+  };
+
+  const changeImg = (event) => {
+    setFruitImage(event.target.value);
   };
 
   return (
@@ -84,23 +97,24 @@ function HandlerExPrac() {
       <div className="go-center">
         <h3>실습4</h3>
         과일:
-        <select name="fruits">
-          <option value="">복숭아</option>
-          <option value="">바나나</option>
+        <select name="fruits" value={fruitImage} onChange={changeImg}>
+          <option value={peachImg}>복숭아</option>
+          <option value={bananaImg}>바나나</option>
         </select>
         배경색:
-        <select name="fruits">
-          <option value="">파란색</option>
-          <option value="">빨간색</option>
+        <select name="bgColor" value={bgColor} onChange={changeBgColor}>
+          <option value="blue">파란색</option>
+          <option value="red">빨간색</option>
         </select>
         글자색:
-        <select name="fruits" onChange={changeColor}>
-          <option value="black">검정색</option>
+        <select name="font" value={fontColor} onChange={changeFontColor}>
+          <option value="green">초록색</option>
           <option value="yellow">노란색</option>
         </select>
         <br />
+        <img src={fruitImage} />
         <br />
-        내용:{" "}
+        내용:
         <input
           type="text"
           value={text}
@@ -111,10 +125,8 @@ function HandlerExPrac() {
         />
         <div
           style={{
-            color: fonColor,
-            backgroundColor: "black",
-            width: "150px",
-            height: "30px",
+            color: fontColor,
+            backgroundColor: bgColor,
           }}
         >
           {text}
