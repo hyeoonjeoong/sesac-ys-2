@@ -1,0 +1,86 @@
+// 원래 css에서는 아래처럼했었다
+
+// :root {
+//     --color-main : red
+// }
+
+// div{
+//     color:  var (--color-main);
+//     width: calc(100vw-100px);
+// }
+//---------------------------------------
+
+$color-main: red;
+
+//정사각형의 박스가 많이 쓰일거같다. 함수로 만들어놓는다.
+//style코드 블록을 @mixin을 이용하여 함수처럼 하나로 묶어두고
+//사용할때는 include 키워드 이용하여 사용
+@mixin box-width($size) {
+  width: $size;
+  height: $size;
+}
+
+.box1 {
+  @include box-width(100px);
+  background-color: blue;
+}
+.box2 {
+  @include box-width(200px);
+  background-color: green;
+}
+
+.scss-parents {
+  color: $color-main;
+  //   width: 100% - 200;
+  //   background-color: antiquewhite;
+}
+
+.scss-parents {
+  ul {
+    background-color: black;
+    color: white;
+  }
+  //하위에서 상위를 선택하고 싶을 땐 & 사용
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//원래 css는 이런식 (아래)
+// .scss-parents > ul {
+
+//   }
+// .scss-parents > div {
+
+//   }
+
+//네모네모---------------
+.origin-sass {
+  display: flex;
+  .box {
+    @include box-width(100px);
+
+    &.red {
+      background-color: red;
+    }
+    &.orange {
+      background-color: orange;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+  }
+}
+
+//-----버튼확장 ( 이전에 사용한css 에 더해서 사용할 수 있도록
+//기존 스타일을 상속해서 사용
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  @extend .btn;
+  background-color: rgb(111, 148, 136);
+}
