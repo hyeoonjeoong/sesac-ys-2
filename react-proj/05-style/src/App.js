@@ -8,7 +8,7 @@ function App() {
     <div>
       {/* <OriginCss /> */}
       <hr />
-      <CssModule />
+      {/* <CssModule /> */}
       <hr />
       <SassComponent />
     </div>
