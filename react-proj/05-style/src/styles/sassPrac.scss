@@ -1,0 +1,61 @@
+@mixin circle-size($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+@mixin left($left) {
+  left: $left;
+}
+@mixin top($top) {
+  top: $top;
+}
+
+@mixin pinkMove($left, $top) {
+  @keyframes pinkMoveTo {
+    0% {
+      @include left(0);
+      @include top(0);
+    }
+
+    25% {
+      @include left(10);
+      @include top(0);
+    }
+
+    50% {
+      @include left(10);
+      @include top(10);
+    }
+
+    75% {
+      @include left(0);
+      @include top(10);
+    }
+    100% {
+      @include left(0);
+      @include top(0);
+    }
+  }
+}
+
+$color-pink: pink;
+$color-yellow: yellow;
+$color-green: green;
+
+.sass-prac {
+  .circle {
+    @include circle-size(50px);
+
+    &.pink {
+      background-color: $color-pink;
+      animation: pinkMove 3s linear 0s infinite;
+    }
+
+    &.yellow {
+      background-color: $color-yellow;
+    }
+    &.green {
+      background-color: $color-green;
+    }
+  }
+}
