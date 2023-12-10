@@ -8,13 +8,13 @@ import HandlerExPrac from "./components/HandlerExPrac";
 function App() {
   return (
     <div>
-      {/* <StateClass name="lily" />
-      
+      <StateClass name="lily" />
+
       <StateFunc />
 
       <EventClass />
 
-      <EventFunc /> */}
+      <EventFunc />
 
       <HandlerExPrac />
     </div>
