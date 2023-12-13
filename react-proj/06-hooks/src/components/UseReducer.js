@@ -1,10 +1,17 @@
+//--const [state, dispatch] = useReducer(reducer, initialValue);의 형태이다.
+//--state : 현재 상태
+//--dispatch : 액션을 발생시키는 함수. reducer를 실행시킨다.
+//--reducer : state 를 업데이트하는 함수.
+//실질적으로 상태를 업데이트 하는 함수이다. 액션을 발생시키는 함수는 dispatch 이다. 결국 dispatch 가 실행시키는 함수가 reducer 인 것!
+//--initialValue : initialState 상태의 초기값
+
 import { useReducer, useState, useCallback } from "react";
 
 const initialValue = { value: 0 };
-
-//reducer는 매개변수 두개를 받는다. 1. 이전 state 2. 어떤 액션 할 지에 대한 정보
-//액션에 따라 state값을 변경해준다. 조건을 걸어서.
 const reducer = (prevState, action) => {
+  //---(3) 현재 state와 action값을 받아 새로운 state를 반환한다.
+  //reducer는 매개변수 두개를 받는다. 1. 이전 state 2. 어떤 액션 할 지에 대한 정보
+  //action값을 따라 state값을 변경해준다. 조건을 걸어서!
   switch (action.type) {
     case "PLUS":
       return { value: prevState.value + 1 };
@@ -27,13 +34,16 @@ const reducer = (prevState, action) => {
 //왜 사용하나?
 
 export default function UseReducer() {
-  //---dispatch사용
-  //dispatch는 reducer를 실행시킨다.
+  //---(1) reducer를 정의한다.
+  //useReducer()내부에 있는 reducer, initialValue는 컴포넌트 외부로 뺀다. (상단에 선언)
+  //dispatch를 통해 reducer가 실행된다. (액션을 발생시키는 함수)
   const [state, dispatch] = useReducer(reducer, initialValue);
   const [number, setNumber] = useState(0);
 
   const handleChangeNumber = useCallback((e) => setNumber(e.target.value), []);
 
+  //---(2) dispatch를 통해 action값을 전달한다.
+  //dispatch는 action값을 받아서 state와 함께 reducer에 전달한다.
   const plus = () => dispatch({ type: "PLUS" });
   const minus = () => dispatch({ type: "MINUS" });
   const reset = () => dispatch({ type: "RESET" });
