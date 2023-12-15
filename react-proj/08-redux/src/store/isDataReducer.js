@@ -1,3 +1,5 @@
+//----------------------------------ver2. redux 구조화
+
 const initialValue = false;
 
 const isDataReducer = (state = initialValue, action) => {

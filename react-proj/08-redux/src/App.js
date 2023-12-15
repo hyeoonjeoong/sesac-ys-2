@@ -1,3 +1,5 @@
+//----------------------------------ver0. props drilling 예시
+
 import { useState } from "react";
 import "./App.css";
 
