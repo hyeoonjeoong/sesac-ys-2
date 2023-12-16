@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from "react";
 import { CommentRow } from "../types/types";
 import CommentTable from "./CommentTable";
 
-type CoditionSearch = "writer" | "title";
+type ConditionSearch = "writer" | "title";
 
 const TsComponent = () => {
   const [inputWriter, setInputWriter] = useState<string>("");
@@ -24,7 +24,7 @@ const TsComponent = () => {
     },
   ]);
   const [result, setResult] = useState<CommentRow[]>([]);
-  const [searchType, setSearchType] = useState<CoditionSearch>("writer");
+  const [searchType, setSearchType] = useState<ConditionSearch>("writer");
 
   const addComment = () => {
     let newComment = {
@@ -60,7 +60,7 @@ const TsComponent = () => {
   const selectSearchType = (e: ChangeEvent<HTMLSelectElement>) => {
     // console.log(e.target.value);
     // select option 상태 설정
-    setSearchType(e.target.value as CoditionSearch);
+    setSearchType(e.target.value as ConditionSearch);
   };
 
   return (
