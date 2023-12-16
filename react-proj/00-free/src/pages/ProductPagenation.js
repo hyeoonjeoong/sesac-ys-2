@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import DataTable from "../components/DataTable";
-import Pagination from "../components/Pagination";
+import PageNation from "../components/PageNation";
 
 const header = [
   {
@@ -60,7 +60,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 1,
+    productID: 3,
     productName: "루돌프풍선",
     // categoryID: 2,
     categoryName: "커스텀풍선",
@@ -70,7 +70,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 2,
+    productID: 4,
     productName: "곰돌이풍선",
     // categoryID: 3,
     categoryName: "용돈풍선",
@@ -80,7 +80,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 1,
+    productID: 5,
     productName: "루돌프풍선",
     // categoryID: 2,
     categoryName: "커스텀풍선",
@@ -90,7 +90,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 2,
+    productID: 6,
     productName: "곰돌이풍선",
     // categoryID: 3,
     categoryName: "용돈풍선",
@@ -100,7 +100,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 1,
+    productID: 7,
     productName: "루돌프풍선",
     // categoryID: 2,
     categoryName: "커스텀풍선",
@@ -110,7 +110,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 2,
+    productID: 8,
     productName: "곰돌이풍선",
     // categoryID: 3,
     categoryName: "용돈풍선",
@@ -120,7 +120,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 1,
+    productID: 9,
     productName: "루돌프풍선",
     // categoryID: 2,
     categoryName: "커스텀풍선",
@@ -130,7 +130,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 2,
+    productID: 10,
     productName: "곰돌이풍선",
     // categoryID: 3,
     categoryName: "용돈풍선",
@@ -140,7 +140,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 1,
+    productID: 11,
     productName: "루돌프풍선",
     // categoryID: 2,
     categoryName: "커스텀풍선",
@@ -150,7 +150,7 @@ const DUMMY = [
     deliveryStatus: "배송중",
   },
   {
-    productID: 2,
+    productID: 12,
     productName: "곰돌이풍선",
     // categoryID: 3,
     categoryName: "용돈풍선",
@@ -176,35 +176,44 @@ const SelectBox = () => {
   );
 };
 
-function ProductPagenation() {
+function ProductPageNation() {
+  //---180 ~ 197 번째 줄 까지의 코드 return문 전에 작성 **
   const [currentPage, setCurrentPage] = useState(1);
   const oneOfPage = 10; // 페이지 당 표시할 아이템 수
 
+  //---현재 페이지에 보여질 아이템 범위 계산 (현재 페이지가 2페이지라면)
+  //2*10 = 20 //2페이지에 보여질 마지막 아이템의 index는 20
   const indexOfLastItem = currentPage * oneOfPage;
+
+  //20-10 = 10 // 2페이지에 보여질 첫번째 아이템의 index는 10
   const indexOfFirstItem = indexOfLastItem - oneOfPage;
+
+  //---현재 페이지에 표시할 아이템 //**여기 수정!
+  //currentPage에 따라 index가 바뀌기 때문에, 그에 맞게 데이터를 잘라서 보여준다.
   const currentItems = DUMMY.slice(indexOfFirstItem, indexOfLastItem);
 
+  //---페이지 변경해주는 함수
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
   return (
     <>
-      <h3>ProductPagenation</h3>
+      <h3>ProductPageNation</h3>
       <DataTable
         keySet="productsTb_"
         headers={header}
-        items={currentItems}
+        items={currentItems} //데이터 수를 확인해야해서 가공된 데이터로 보내줘야 한다. 데이터 자체를 보내주면 페이지 안넘어감.
         selectBox={<SelectBox />}
       />
-      <Pagination
-        total={DUMMY.length}
-        limit={oneOfPage}
-        page={currentPage}
-        setPage={handlePageChange}
+      <PageNation //---PageNation컴포넌트 import 후 아래 props 전달 **
+        total={DUMMY.length} //전체 아이템 개수 //**여기 수정!
+        limit={oneOfPage} //페이지 당 보여질 게시물 개수
+        page={currentPage} //현재 패이지 번호
+        setPage={handlePageChange} // 페이지 변경 함수
       />
     </>
   );
 }
 
-export default ProductPagenation;
+export default ProductPageNation;

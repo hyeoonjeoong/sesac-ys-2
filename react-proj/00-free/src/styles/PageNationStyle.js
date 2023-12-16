@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PaginationWrapper = styled.div`
+export const PageNationWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -10,13 +10,13 @@ export const PageButton = styled.button`
   margin: 0 5px;
   padding: 5px 10px;
   cursor: pointer;
-  background-color: ${({ active }) => (active ? "#007bff" : "#fff")};
-  color: ${({ active }) => (active ? "#fff" : "#007bff")};
-  border: 1px solid #007bff;
+  background-color: ${({ active }) => (active ? "#333" : "#fff")};
+  color: ${({ active }) => (active ? "#fff" : "#333")};
+  border: 1px solid #333;
   border-radius: 4px;
 
   &:hover {
-    background-color: #007bff;
+    background-color: #333;
     color: #fff;
   }
 `;
