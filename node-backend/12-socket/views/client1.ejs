@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소켓</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h3>소켓 연습</h3>
+    <button onclick="hello()">hello</button>
+    <button onclick="entry()">입장!</button>
+    <br />
+    <button onclick="hi()">hi!</button>
+    <button onclick="study()">study!</button>
+    <button onclick="byeBye()">bye!</button>
+    <div id="msgBox"></div>
+
+    <script>
+      //io() 함수는 클라이언트 소켓을 생성하고, 서버와의 연결을 설정
+      //---여기서 connection이 일어난다.
+      //io로 인해서 커넥션 이벤트가 생긴다.
+      const socket = io();
+      //소켓을 이용해 데이터 전송하는 함수 : emit     
+      //소켓을 이용해 데이터 수신하는 이벤트 : on
+
+      //---클라이언트에서 전송하는 형태
+      function hello() {
+        //(전송 할 이벤트 이름, [전송 할 데이터])
+        //전송 할 데이터 형태는 자유롭게. (문자열, 숫자, 객체 다 가능)
+        socket.emit("hello", {
+          msg: "안녕하세요"
+        })
+      }
+
+      //---이벤트는 특정 함수 내에 넣지 않는다.
+      //계속 실행된다. 함수 안에 넣으려면 한 번만 실행되도록 해야한다.
+      //이밴트는 특정한 상황에서 발생되더야 한다. 
+      //함수가 실행되면서 이벤트가 싱행된다.  함수 또 실행하면 이벤트가 또 등록된다. 두번 이벤트가 실행되는것. 이거 반복된다.
+
+      socket.on("bye", (res) => {
+        console.log(res)
+      })
+
+      //---전체 공지 메시지라면?
+      function entry() {
+        socket.emit("entry")
+      }
+
+      socket.on("notice", (res) => {
+        console.log(res.msg)
+      })
+      //---------실습
+
+
+
+      function hi() {
+        socket.emit("hi")
+      }
+      socket.on("hiRes", (res) => {
+        const msgBox = document.getElementById("msgBox")
+        msgBox.innerHTML = res.msg
+        console.log(res)
+      })
+
+      function study() {
+        socket.emit("study")
+      }
+      socket.on("studyRes", (res) => {
+        const msgBox = document.getElementById("msgBox")
+        msgBox.innerHTML = res.msg
+        console.log(res)
+      })
+
+      function byeBye() {
+        socket.emit("byeBye")
+      }
+      socket.on("byeByeyRes", (res) => {
+        const msgBox = document.getElementById("msgBox")
+        msgBox.innerHTML = res.msg
+        console.log(res)
+      })
+    </script>
+  </body>
+</html>
