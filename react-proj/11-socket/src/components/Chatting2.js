@@ -30,8 +30,14 @@ export default function Chatting2() {
   };
 
   useEffect(() => {
-    //아래는 mount시 자동으로 입장시키기 때문에 일단 주석
     // initSocketConnect();
+    socket.on("error", (res) => {
+      alert(res.msg);
+    });
+
+    socket.on("entrySuccess", (res) => {
+      setUserId(res.userId);
+    });
   }, []);
 
   useEffect(() => {
@@ -49,8 +55,9 @@ export default function Chatting2() {
   const entryChat = () => {
     initSocketConnect();
     socket.emit("entry", { userId: userIdInput });
-    //실습 3-2 . 바로 userId에 값을 할당하는게 아니라
-    setUserId(userIdInput);
+    // [실습 3-2] 고민해보기
+    // 바로 userId에 값을 할당하지 않고
+    // setUserId(userIdInput);
   };
   return (
     <>
