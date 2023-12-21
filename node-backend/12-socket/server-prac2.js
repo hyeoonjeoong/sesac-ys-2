@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
       });
     } else {
       //중복되지 않을 경우에
-      io.emit("notice", { msg: `${res.userId}님이 입장하셨습니다.` });
+      io.emit("notice", { msg: `--- ${res.userId}님이 입장하셨습니다.---` });
       socket.emit("entrySuccess", { userId: res.userId });
       userIdArr[socket.id] = res.userId;
       updateUserList();

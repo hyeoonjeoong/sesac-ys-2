@@ -65,6 +65,13 @@ export default function Chatting3() {
       const content = `${res.dm ? "(속닥속닥) " : ""} ${res.userId}: ${
         res.msg
       }`;
+
+      // const content = {
+      //   userId: res.userId,
+      //   msg: res.msg,
+      //   dm: res.dm ? "(속닥속닥) " : "",
+      // };
+
       const newChatList = [...chatList, { type: type, content: content }];
       setChatList(newChatList);
     },
@@ -97,6 +104,12 @@ export default function Chatting3() {
     initSocketConnect();
     socket.emit("entry", { userId: userIdInput });
   };
+
+  // const chatContent = ({chat})=>{
+  //   const {type, connect} = chat;
+
+  // }
+
   return (
     <>
       <h3>실습 4, 5번</h3>
@@ -107,29 +120,44 @@ export default function Chatting3() {
 
       {userId ? (
         <>
-          <div>{userId}님 환영합니다.</div>
-          <div className="chat-container">
-            {chatList.map((chat, i) => {
-              if (chat.type === "notice") return <Notice key={i} chat={chat} />;
-              else return <Chat key={i} chat={chat} />;
-            })}
-          </div>
-          <div className="input-container">
-            <select value={dmTo} onChange={(e) => setDmTo(e.target.value)}>
-              <option value="all">전체</option>
-              {userListOptions}
-            </select>
-            <input
-              type="text"
-              value={msgInput}
-              onChange={(e) => setMsgInput(e.target.value)}
-            />
-            <button onClick={sendMsg}>전송</button>
+          <div className="chat-box">
+            <div className="chat-box-left">
+              <h3>여기는 참가자들</h3>
+              <div>{userId}</div>
+            </div>
+            <div className="chat-box-right">
+              <div className="chat-welcome">💫 {userId}님 환영합니다. 😊</div>
+              <div className="chat-wrapper">
+                <div className="chat-container">
+                  {chatList.map((chat, i) => {
+                    if (chat.type === "notice")
+                      return <Notice key={i} chat={chat} />;
+                    else return <Chat key={i} chat={chat} />;
+                  })}
+                </div>
+                <div className="input-container">
+                  <select
+                    value={dmTo}
+                    onChange={(e) => setDmTo(e.target.value)}
+                  >
+                    <option value="all">귓속말 하기</option>
+                    {userListOptions}
+                  </select>
+                  <input
+                    type="text"
+                    placeholder="메시지를 입력해주세요 : )"
+                    value={msgInput}
+                    onChange={(e) => setMsgInput(e.target.value)}
+                  />
+                  <button onClick={sendMsg}>전송</button>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       ) : (
         <>
-          <div className="input-container">
+          <div className="startChat-container">
             <input
               type="text"
               value={userIdInput}
