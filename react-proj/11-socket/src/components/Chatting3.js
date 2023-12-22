@@ -10,7 +10,7 @@ export default function Chatting3() {
   const [userIdInput, setUserIdInput] = useState("");
   const [chatList, setChatList] = useState([]);
   const [userId, setUserId] = useState(null);
-  const [userList, setUserList] = useState({});
+  const [userList, setUserList] = useState([]);
   const [dmTo, setDmTo] = useState("all");
 
   const initSocketConnect = () => {
@@ -62,15 +62,11 @@ export default function Chatting3() {
   const addChatList = useCallback(
     (res) => {
       const type = res.userId === userId ? "my" : "other";
-      const content = `${res.dm ? "(속닥속닥) " : ""} ${res.userId}: ${
-        res.msg
-      }`;
-
-      // const content = {
-      //   userId: res.userId,
-      //   msg: res.msg,
-      //   dm: res.dm ? "(속닥속닥) " : "",
-      // };
+      const content = {
+        userId: res.userId,
+        msg: res.msg,
+        dm: res.dm ? `(속닥속닥)${res.userId}` : "",
+      };
 
       const newChatList = [...chatList, { type: type, content: content }];
       setChatList(newChatList);
@@ -100,7 +96,22 @@ export default function Chatting3() {
     }
   };
 
+  const clickEnter = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMsg();
+    }
+  };
+
+  useEffect(() => {
+    socket.on("userList", (res) => {
+      setUserList(res);
+    });
+  }, []);
   const entryChat = () => {
+    const newUserList = [...userList, userIdInput];
+    setUserList(newUserList);
+    console.log(userList);
     initSocketConnect();
     socket.emit("entry", { userId: userIdInput });
   };
@@ -122,19 +133,41 @@ export default function Chatting3() {
         <>
           <div className="chat-box">
             <div className="chat-box-left">
-              <h3>여기는 참가자들</h3>
-              <div>{userId}</div>
+              <h3>채팅방 참가자 목록</h3>
+              <ul>
+                {userList.map((user) => (
+                  <li key={user}>{user}</li>
+                ))}
+              </ul>
             </div>
             <div className="chat-box-right">
               <div className="chat-welcome">💫 {userId}님 환영합니다. 😊</div>
               <div className="chat-wrapper">
                 <div className="chat-container">
                   {chatList.map((chat, i) => {
-                    if (chat.type === "notice")
+                    if (chat.type === "notice") {
                       return <Notice key={i} chat={chat} />;
-                    else return <Chat key={i} chat={chat} />;
+                    } else {
+                      const { userId, msg, dm } = chat.content;
+                      return (
+                        <div
+                          className={`chat ${chat.type}`}
+                          style={{
+                            textAlign: chat.type === "my" ? "right" : "left",
+                          }}
+                        >
+                          {chat.type === "other" && (
+                            <span className="user-id">{userId}</span>
+                          )}
+                          <span className="message">
+                            {dm} {msg}
+                          </span>
+                        </div>
+                      );
+                    }
                   })}
                 </div>
+
                 <div className="input-container">
                   <select
                     value={dmTo}
@@ -148,6 +181,7 @@ export default function Chatting3() {
                     placeholder="메시지를 입력해주세요 : )"
                     value={msgInput}
                     onChange={(e) => setMsgInput(e.target.value)}
+                    onKeyPress={clickEnter}
                   />
                   <button onClick={sendMsg}>전송</button>
                 </div>
@@ -162,6 +196,7 @@ export default function Chatting3() {
               type="text"
               value={userIdInput}
               onChange={(e) => setUserIdInput(e.target.value)}
+              placeholder="입장 시 사용 할 ID를 입력해주세요 🙂"
             />
             <button onClick={entryChat}>입장</button>
           </div>

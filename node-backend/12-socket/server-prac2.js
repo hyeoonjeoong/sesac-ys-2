@@ -19,8 +19,9 @@ const userIdArr = {};
 // { "socket.id": "userIda", "socket.id": "userIdb" ,"socket.id": "userIdc"  }
 
 const updateUserList = () => {
-  io.emit("userList", userIdArr);
+  io.emit("userList", Object.values(userIdArr));
 };
+
 io.on("connection", (socket) => {
   console.log("socket id", socket.id);
   // abcdjfkladjflaksjrlew

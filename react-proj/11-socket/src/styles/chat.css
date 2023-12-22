@@ -123,3 +123,46 @@
 input::placeholder {
   text-align: center;
 }
+
+.chat {
+  margin-bottom: 5px;
+  border-bottom: 0.5px solid rgb(210, 208, 208);
+}
+
+.user-id {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.message {
+  display: block;
+}
+.startChat-container {
+  width: 950px;
+  height: 550px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.startChat-container > button {
+  width: 55px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0.5px solid rgb(125, 125, 125);
+  margin-top: 10px;
+}
+
+.startChat-container > input {
+  width: 230px;
+  background-color: rgb(210, 208, 208);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
