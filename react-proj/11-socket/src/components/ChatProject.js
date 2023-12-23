@@ -1,7 +1,7 @@
 //server🦖 node-backend > 12-socket > server-prac2.js
 
-import "../styles/chat.css";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import "../styles/chatProjectStyle.css";
+import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import Chat from "./Chat";
 import Notice from "./Notice";
 import io from "socket.io-client";
@@ -123,14 +123,16 @@ export default function Chatting3() {
 
   // }
 
+  const goMain = () => {
+    console.log("나가기");
+  };
+
+  const box = useRef();
+  const scrollTop = () => {
+    box.current.scrollTop = 0;
+  };
   return (
     <>
-      <h3>실습 4, 5번</h3>
-      <ul>
-        <li>채팅창 메세지 전송</li>
-        <li>DM 기능 구현</li>
-      </ul>
-
       {userId ? (
         <>
           <div className="chat-box">
@@ -138,14 +140,28 @@ export default function Chatting3() {
               <h3>채팅방 참가자 목록</h3>
               <ul>
                 {userList.map((user) => (
-                  <div className="list-box">
-                    <li key={user}>{user}</li>
-                  </div>
+                  <>
+                    <div className="userList-box scroll-box" ref={box}>
+                      <div className="userList-profile">
+                        <div className="userList-img"></div>
+                      </div>
+                      <div className="userList-name ">
+                        <li key={user}>{user}</li>
+                      </div>
+                    </div>
+                  </>
                 ))}
               </ul>
+              <div className="chat-out" onClick={goMain}>
+                <div className="chat-out-icon"></div>
+                <span>나가기</span>
+              </div>
             </div>
             <div className="chat-box-right">
-              <div className="chat-welcome">💫 {userId}님 환영합니다. 😊</div>
+              <div className="chat-welcome">
+                😊
+                {userId}님 환영합니다. 😊
+              </div>
               <div className="chat-wrapper">
                 <div className="chat-container">
                   {chatList.map((chat, i) => {
