@@ -1,5 +1,15 @@
 //server🦖 node-backend > 12-socket > server-prac2.js
 
+//💛 코드 이해 후 레포 따로 파기
+
+//💛 메인, 유저 리스트, 채팅창 컴포넌트 분리
+//💛 메인, 채팅화면 라우터 설정. 나가기 버튼 클릭 시 네비게이터로 메인 라우터로 이동하기
+//💛 채팅목록 스크롤 구현
+//💛 메인화면 엔터 시 입장 가능
+//💛 유효성 검사, 예외 처리하기
+//💛 귓속말 시 아이콘 추가
+//💛 배경 테마 바꾸기 / 실습 한 것 처럼 selectBox로 배경컬러 선택 시 변경 / 어두운 배경 시 폰트 색 흰색으로 변경
+
 import "../styles/chatProjectStyle.css";
 import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import Chat from "./Chat";
