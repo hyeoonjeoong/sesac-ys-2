@@ -7,7 +7,6 @@
 //💛 채팅목록 스크롤 구현
 //💛 메인화면 엔터 시 입장 가능
 //💛 유효성 검사, 예외 처리하기
-//💛 귓속말 시 아이콘 추가
 //💛 배경 테마 바꾸기 / 실습 한 것 처럼 selectBox로 배경컬러 선택 시 변경 / 어두운 배경 시 폰트 색 흰색으로 변경
 
 import "../styles/chatProjectStyle.css";
@@ -24,6 +23,8 @@ export default function Chatting3() {
   const [userId, setUserId] = useState(null);
   const [userList, setUserList] = useState([]);
   const [dmTo, setDmTo] = useState("all");
+  const [chatPlaceholder, setChatPlaceholder] =
+    useState("메시지를 입력해주세요 : )");
 
   const initSocketConnect = () => {
     console.log("connected", socket.connected);
@@ -59,7 +60,7 @@ export default function Chatting3() {
       if (userList[key] === userId) continue;
       options.push(
         <option key={key} value={key}>
-          {userList[key]}
+          👂🏻{userList[key]} 에게 속닥속닥
         </option>
       );
     }
@@ -77,7 +78,7 @@ export default function Chatting3() {
       const content = {
         userId: res.userId,
         msg: res.msg,
-        dm: res.dm ? `(속닥속닥)${res.userId}` : "",
+        dm: res.dm ? "👂🏻귓속말: " : "",
       };
 
       const newChatList = [...chatList, { type: type, content: content }];
@@ -105,6 +106,8 @@ export default function Chatting3() {
     if (msgInput !== "") {
       socket.emit("sendMsg", { userId: userId, msg: msgInput, dm: dmTo });
       setMsgInput("");
+    } else {
+      setChatPlaceholder("✅ 메세지를 입력해주세요❗️✅");
     }
   };
 
@@ -135,12 +138,11 @@ export default function Chatting3() {
 
   const goMain = () => {
     console.log("나가기");
+    window.location.reload();
   };
 
   const box = useRef();
-  const scrollTop = () => {
-    box.current.scrollTop = 0;
-  };
+
   return (
     <>
       {userId ? (
@@ -149,22 +151,24 @@ export default function Chatting3() {
             <div className="chat-box-left">
               <h3>채팅방 참가자 목록</h3>
               <ul>
-                {userList.map((user) => (
-                  <>
-                    <div className="userList-box scroll-box" ref={box}>
-                      <div className="userList-profile">
-                        <div className="userList-img"></div>
+                <div className="scroll-box" ref={box}>
+                  {userList.map((user) => (
+                    <>
+                      <div className="userList-box ">
+                        <div className="userList-profile">
+                          <div className="userList-img"></div>
+                        </div>
+                        <div className="userList-name ">
+                          <li key={user}>{user}</li>
+                        </div>
                       </div>
-                      <div className="userList-name ">
-                        <li key={user}>{user}</li>
-                      </div>
-                    </div>
-                  </>
-                ))}
+                    </>
+                  ))}
+                </div>
               </ul>
               <div className="chat-out" onClick={goMain}>
                 <div className="chat-out-icon"></div>
-                <span>나가기</span>
+                {/* <span>나가기</span> */}
               </div>
             </div>
             <div className="chat-box-right">
@@ -203,12 +207,12 @@ export default function Chatting3() {
                     value={dmTo}
                     onChange={(e) => setDmTo(e.target.value)}
                   >
-                    <option value="all">귓속말 하기</option>
+                    <option value="all">전체 전송</option>
                     {userListOptions}
                   </select>
                   <input
                     type="text"
-                    placeholder="메시지를 입력해주세요 : )"
+                    placeholder={chatPlaceholder}
                     value={msgInput}
                     onChange={(e) => setMsgInput(e.target.value)}
                     onKeyPress={clickEnter}
