@@ -5,6 +5,8 @@
 //실질적으로 상태를 업데이트 하는 함수이다. 액션을 발생시키는 함수는 dispatch 이다. 결국 dispatch 가 실행시키는 함수가 reducer 인 것!
 //--initialValue : initialState 상태의 초기값
 
+//const [현재상태, 액션 명령할 함수] = useReducer(state 업데이트 해주는 함수, 초기값)
+
 import { useReducer, useState, useCallback } from "react";
 
 const initialValue = { value: 0 };
@@ -42,7 +44,8 @@ export default function UseReducer() {
 
   const handleChangeNumber = useCallback((e) => setNumber(e.target.value), []);
 
-  //---(2) dispatch를 통해 action값을 전달한다.
+  //---(2) dispatch 함수 : dispatch를 통해 action값을 전달한다.
+  //dispatch는 파라미터에 action값을 넣어준다.
   //dispatch는 action값을 받아서 state와 함께 reducer에 전달한다.
   const plus = () => dispatch({ type: "PLUS" });
   const minus = () => dispatch({ type: "MINUS" });
