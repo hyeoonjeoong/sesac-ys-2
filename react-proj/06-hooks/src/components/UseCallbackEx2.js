@@ -7,6 +7,10 @@ export default function UseCallbackEx2({ postId }) {
     const res = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${postId}`
     );
+    //위에서 불러온 응답을 json형태로 변환
+    //버튼 클릭마다 postId + 1 되게 되고
+    //[postId]가 바뀔 때 마다 json데이터도 결국 바뀌게 되는 것.
+
     const post = await res.json();
     setPost(post);
   }, [postId]);
